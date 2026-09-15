@@ -1,0 +1,120 @@
+- generic [active] [ref=f9e1]:
+  - link "Přejít na hlavní obsah" [ref=f9e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f9e3]:
+    - generic [ref=f9e4]:
+      - link "Logo České pošty Česká pošta, s.p." [ref=f9e5] [cursor=pointer]:
+        - /url: /
+        - img "Logo České pošty" [ref=f9e6]
+        - generic [ref=f9e7]: Česká pošta, s.p.
+      - search [ref=f9e8]:
+        - generic [ref=f9e9]: Vyhledávání
+        - searchbox "Vyhledávání" [ref=f9e10]
+      - generic [ref=f9e12]:
+        - button "Zaregistrovat" [ref=f9e13] [cursor=pointer]
+        - button "Přihlásit se" [ref=f9e14] [cursor=pointer]
+      - link "EN" [ref=f9e15] [cursor=pointer]:
+        - /url: "#"
+  - navigation [ref=f9e16]:
+    - generic [ref=f9e17]:
+      - link "Služby" [ref=f9e19] [cursor=pointer]:
+        - /url: /#sluzby
+      - link "Užitečné nástroje" [ref=f9e21] [cursor=pointer]:
+        - /url: /#nastroje
+      - link "Aktuality" [ref=f9e23] [cursor=pointer]:
+        - /url: /aktuality
+      - link "Ke stažení" [ref=f9e25] [cursor=pointer]:
+        - /url: /info/cenik
+      - link "Kontakty" [ref=f9e27] [cursor=pointer]:
+        - /url: /info/kontakty
+      - link "Kariéra" [ref=f9e29] [cursor=pointer]:
+        - /url: /info/studenti
+      - link "O společnosti" [ref=f9e31] [cursor=pointer]:
+        - /url: /info/profil
+  - main [ref=f9e32]:
+    - generic [ref=f9e33]:
+      - navigation [ref=f9e34]:
+        - link "Úvod" [ref=f9e35] [cursor=pointer]:
+          - /url: /
+        - text: /
+        - link "Aktuality" [ref=f9e36] [cursor=pointer]:
+          - /url: /aktuality
+        - text: / Volební leták není reklamou
+      - paragraph [ref=f9e37]: 14. 9. 2026 · Aktuality · 3 min čtení
+      - heading "Volební leták není reklamou" [level=1] [ref=f9e38]
+      - generic [ref=f9e39]:
+        - paragraph [ref=f9e40]: Česká pošta doručuje volební letáky v rámci zákonných povinností. Nejde o reklamní zásilku, proto se na ni nevztahuje zákaz vhazování reklamy do schránek označených „reklamu nechci“.
+        - paragraph [ref=f9e41]: Volební materiály se doručují podle pokynů zadavatele a volebního kalendáře. Pokud leták nedorazil, ověřte přístupnost schránky a jmenovku.
+        - paragraph [ref=f9e42]: Dotazy k obsahu směřujte na zadavatele. Pošta odpovídá za doručení, nikoli za politický obsah.
+      - paragraph [ref=f9e43]:
+        - link "Zpět na archiv aktualit" [ref=f9e44] [cursor=pointer]:
+          - /url: /aktuality
+  - contentinfo [ref=f9e45]:
+    - generic [ref=f9e46]:
+      - generic [ref=f9e47]:
+        - heading "O České poště" [level=4] [ref=f9e48]
+        - list [ref=f9e49]:
+          - listitem [ref=f9e50]:
+            - link "Bezpečnostní informace" [ref=f9e51] [cursor=pointer]:
+              - /url: /info/bezpecnost
+          - listitem [ref=f9e52]:
+            - link "Kontakty" [ref=f9e53] [cursor=pointer]:
+              - /url: /info/kontakty
+          - listitem [ref=f9e54]:
+            - link "Profil společnosti" [ref=f9e55] [cursor=pointer]:
+              - /url: /info/profil
+          - listitem [ref=f9e56]:
+            - link "Ochrana osobních údajů – GDPR" [ref=f9e57] [cursor=pointer]:
+              - /url: /info/gdpr
+      - generic [ref=f9e58]:
+        - heading "Užitečné informace" [level=4] [ref=f9e59]
+        - list [ref=f9e60]:
+          - listitem [ref=f9e61]:
+            - link "Ceník" [ref=f9e62] [cursor=pointer]:
+              - /url: /info/cenik
+          - listitem [ref=f9e63]:
+            - link "Formuláře a tiskopisy" [ref=f9e64] [cursor=pointer]:
+              - /url: /info/formulare
+          - listitem [ref=f9e65]:
+            - link "Poštovní podmínky" [ref=f9e66] [cursor=pointer]:
+              - /url: /info/podminky
+          - listitem [ref=f9e67]:
+            - link "Návody k balení a podání" [ref=f9e68] [cursor=pointer]:
+              - /url: /info/baleni
+      - generic [ref=f9e69]:
+        - heading "Nabízíme" [level=4] [ref=f9e70]
+        - list [ref=f9e71]:
+          - listitem [ref=f9e72]:
+            - link "Široké spektrum služeb" [ref=f9e73] [cursor=pointer]:
+              - /url: /info/sluzby
+          - listitem [ref=f9e74]:
+            - link "Zákaznická karta" [ref=f9e75] [cursor=pointer]:
+              - /url: /info/karta
+          - listitem [ref=f9e76]:
+            - link "Veřejné zakázky" [ref=f9e77] [cursor=pointer]:
+              - /url: /info/zakazky
+          - listitem [ref=f9e78]:
+            - link "Aktuality" [ref=f9e79] [cursor=pointer]:
+              - /url: /aktuality
+      - generic [ref=f9e80]:
+        - heading "Rychlé odkazy" [level=4] [ref=f9e81]
+        - list [ref=f9e82]:
+          - listitem [ref=f9e83]:
+            - link "Sledovat zásilku" [ref=f9e84] [cursor=pointer]:
+              - /url: /#trackBox
+          - listitem [ref=f9e85]:
+            - link "Změna doručení" [ref=f9e86] [cursor=pointer]:
+              - /url: /info/zmena
+          - listitem [ref=f9e87]:
+            - link "Průzkum spokojenosti" [ref=f9e88] [cursor=pointer]:
+              - /url: /info/pruzkum
+          - listitem [ref=f9e89]:
+            - link "Mobilní aplikace" [ref=f9e90] [cursor=pointer]:
+              - /url: /info/aplikace
+    - generic [ref=f9e91]:
+      - generic [ref=f9e92]: © 2026 Česká pošta
+      - generic [ref=f9e93]:
+        - link "Přístupnost webu" [ref=f9e94] [cursor=pointer]:
+          - /url: /info/pristupnost
+        - link "Mapa stránek" [ref=f9e95] [cursor=pointer]:
+          - /url: /info/mapa

@@ -182,6 +182,15 @@ test.describe('Educational UI demo - E2E Tests', () => {
     expect((await page.$$('#innerRoot .inner-list-item')).length).toBeGreaterThan(0);
   });
 
+  test('Yellow service tile opens a service page', async ({ page }) => {
+    await page.click('.service-card[href="/info/psani"]');
+    await page.waitForURL(/\/info\/psani/);
+    const heading = await page.locator('#innerRoot h1').textContent();
+    expect(heading).toContain('Poštovní psaní a zásilky');
+    const body = await page.locator('#innerRoot').textContent();
+    expect(body).toMatch(/balík|psaní|zásilk/i);
+  });
+
   test('Footer GDPR link opens info page', async ({ page }) => {
     await page.click('footer a[href="/info/gdpr"]');
     await page.waitForURL(/\/info\/gdpr/);

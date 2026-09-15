@@ -1,0 +1,115 @@
+- generic [active] [ref=f10e1]:
+  - link "Přejít na hlavní obsah" [ref=f10e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f10e3]:
+    - generic [ref=f10e4]:
+      - link "Logo České pošty Česká pošta, s.p." [ref=f10e5] [cursor=pointer]:
+        - /url: /
+        - img "Logo České pošty" [ref=f10e6]
+        - generic [ref=f10e7]: Česká pošta, s.p.
+      - search [ref=f10e8]:
+        - generic [ref=f10e9]: Vyhledávání
+        - searchbox "Vyhledávání" [ref=f10e10]
+      - generic [ref=f10e12]:
+        - button "Zaregistrovat" [ref=f10e13] [cursor=pointer]
+        - button "Přihlásit se" [ref=f10e14] [cursor=pointer]
+      - link "EN" [ref=f10e15] [cursor=pointer]:
+        - /url: "#"
+  - navigation [ref=f10e16]:
+    - generic [ref=f10e17]:
+      - link "Služby" [ref=f10e19] [cursor=pointer]:
+        - /url: /#sluzby
+      - link "Užitečné nástroje" [ref=f10e21] [cursor=pointer]:
+        - /url: /#nastroje
+      - link "Aktuality" [ref=f10e23] [cursor=pointer]:
+        - /url: /aktuality
+      - link "Ke stažení" [ref=f10e25] [cursor=pointer]:
+        - /url: /info/cenik
+      - link "Kontakty" [ref=f10e27] [cursor=pointer]:
+        - /url: /info/kontakty
+      - link "Kariéra" [ref=f10e29] [cursor=pointer]:
+        - /url: /info/studenti
+      - link "O společnosti" [ref=f10e31] [cursor=pointer]:
+        - /url: /info/profil
+  - main [ref=f10e32]:
+    - generic [ref=f10e33]:
+      - navigation [ref=f10e34]:
+        - link "Úvod" [ref=f10e35] [cursor=pointer]:
+          - /url: /
+        - text: / Ochrana osobních údajů – GDPR
+      - heading "Ochrana osobních údajů – GDPR" [level=1] [ref=f10e36]
+      - generic [ref=f10e37]:
+        - paragraph [ref=f10e38]: Údaje zpracováváme k doručení zásilky, vedení účtu a zákonným povinnostem.
+        - paragraph [ref=f10e39]: Máte právo na přístup, opravu, výmaz a námitku. Cookies nastavíte v liště souhlasu na webu.
+      - paragraph [ref=f10e40]:
+        - link "Zpět na úvodní stránku" [ref=f10e41] [cursor=pointer]:
+          - /url: /
+  - contentinfo [ref=f10e42]:
+    - generic [ref=f10e43]:
+      - generic [ref=f10e44]:
+        - heading "O České poště" [level=4] [ref=f10e45]
+        - list [ref=f10e46]:
+          - listitem [ref=f10e47]:
+            - link "Bezpečnostní informace" [ref=f10e48] [cursor=pointer]:
+              - /url: /info/bezpecnost
+          - listitem [ref=f10e49]:
+            - link "Kontakty" [ref=f10e50] [cursor=pointer]:
+              - /url: /info/kontakty
+          - listitem [ref=f10e51]:
+            - link "Profil společnosti" [ref=f10e52] [cursor=pointer]:
+              - /url: /info/profil
+          - listitem [ref=f10e53]:
+            - link "Ochrana osobních údajů – GDPR" [ref=f10e54] [cursor=pointer]:
+              - /url: /info/gdpr
+      - generic [ref=f10e55]:
+        - heading "Užitečné informace" [level=4] [ref=f10e56]
+        - list [ref=f10e57]:
+          - listitem [ref=f10e58]:
+            - link "Ceník" [ref=f10e59] [cursor=pointer]:
+              - /url: /info/cenik
+          - listitem [ref=f10e60]:
+            - link "Formuláře a tiskopisy" [ref=f10e61] [cursor=pointer]:
+              - /url: /info/formulare
+          - listitem [ref=f10e62]:
+            - link "Poštovní podmínky" [ref=f10e63] [cursor=pointer]:
+              - /url: /info/podminky
+          - listitem [ref=f10e64]:
+            - link "Návody k balení a podání" [ref=f10e65] [cursor=pointer]:
+              - /url: /info/baleni
+      - generic [ref=f10e66]:
+        - heading "Nabízíme" [level=4] [ref=f10e67]
+        - list [ref=f10e68]:
+          - listitem [ref=f10e69]:
+            - link "Široké spektrum služeb" [ref=f10e70] [cursor=pointer]:
+              - /url: /info/sluzby
+          - listitem [ref=f10e71]:
+            - link "Zákaznická karta" [ref=f10e72] [cursor=pointer]:
+              - /url: /info/karta
+          - listitem [ref=f10e73]:
+            - link "Veřejné zakázky" [ref=f10e74] [cursor=pointer]:
+              - /url: /info/zakazky
+          - listitem [ref=f10e75]:
+            - link "Aktuality" [ref=f10e76] [cursor=pointer]:
+              - /url: /aktuality
+      - generic [ref=f10e77]:
+        - heading "Rychlé odkazy" [level=4] [ref=f10e78]
+        - list [ref=f10e79]:
+          - listitem [ref=f10e80]:
+            - link "Sledovat zásilku" [ref=f10e81] [cursor=pointer]:
+              - /url: /#trackBox
+          - listitem [ref=f10e82]:
+            - link "Změna doručení" [ref=f10e83] [cursor=pointer]:
+              - /url: /info/zmena
+          - listitem [ref=f10e84]:
+            - link "Průzkum spokojenosti" [ref=f10e85] [cursor=pointer]:
+              - /url: /info/pruzkum
+          - listitem [ref=f10e86]:
+            - link "Mobilní aplikace" [ref=f10e87] [cursor=pointer]:
+              - /url: /info/aplikace
+    - generic [ref=f10e88]:
+      - generic [ref=f10e89]: © 2026 Česká pošta
+      - generic [ref=f10e90]:
+        - link "Přístupnost webu" [ref=f10e91] [cursor=pointer]:
+          - /url: /info/pristupnost
+        - link "Mapa stránek" [ref=f10e92] [cursor=pointer]:
+          - /url: /info/mapa

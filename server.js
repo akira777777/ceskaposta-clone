@@ -138,7 +138,15 @@ const mockPages = {
   mapa: { title: 'Mapa stránek', body: 'Hlavní celky webu: služby, nástroje, rady, ke stažení, kontakty a o společnosti.\n\nAktuality jsou v archivu. Sledování zásilky a kalkulátor najdete na úvodní straně.' },
   zmena: { title: 'Změna doručení', body: 'U vybraných balíků změníte den, adresu nebo výdejní místo před doručením.\n\nZadáte číslo zásilky a ověřovací údaj. Služba není u všech produktů.' },
   pruzkum: { title: 'Průzkum spokojenosti', body: 'Po doručení vás můžeme požádat o krátké hodnocení.\n\nOdpověď je dobrovolná a nemá vliv na výdej zásilky.' },
-  aplikace: { title: 'Mobilní aplikace PoštaOnline', body: 'Aplikace sleduje zásilky, hledá pobočku a ukáže výzvy k vyzvednutí.\n\nStahujte ji z oficiálních obchodů. Přihlášení je stejné jako na webu PoštaOnline.' }
+  aplikace: { title: 'Mobilní aplikace PoštaOnline', body: 'Aplikace sleduje zásilky, hledá pobočku a ukáže výzvy k vyzvednutí.\n\nStahujte ji z oficiálních obchodů. Přihlášení je stejné jako na webu PoštaOnline.' },
+  psani: { title: 'Poštovní psaní a zásilky', body: 'Obyčejné i doporučené psaní, balíky Do ruky, Na poštu a Balíkovna. Sledování zásilky zadáte číslem na úvodní straně.\n\nDo zahraničí použijte příslušnou službu a vyplňte celní údaje, pokud zásilka opouští EU. Cenu odhadnete kalkulátorem, přesnou částku určí hmotnost a doplňkové služby na přepážce.' },
+  platby: { title: 'Platby a finance', body: 'Na poště zaplatíte složenku, poukázku a vybrané poplatky. U některých služeb je možný výběr hotovosti kartou.\n\nPoštovní poukázky A, B, C a zahraniční poukázky mají vlastní ceník. Doklad o platbě si uschovejte kvůli reklamaci.' },
+  reklama: { title: 'Reklamní zásilky', body: 'Adresné i neadresné reklamní zásilky doručujeme podle objemu a oblasti. Schránky s nápisem „reklamu nechci“ neadresnou reklamu nedostanou.\n\nVolební materiály reklamou nejsou. Obchodní nabídku infoposty poptáte jako firemní zákazník.' },
+  online: { title: 'Služby pošty online', body: 'Přes PoštaOnline podáte zásilku, změníte doručení, rezervujete si čas na pobočce a sledujete pohyb balíku.\n\nPřihlášení je stejné jako v mobilní aplikaci. Bez účtu funguje sledování zásilky a vyhledání pobočky.' },
+  egovernment: { title: 'Služby eGovernment', body: 'Na poštách s Czech POINT získáte výpisy z rejstříků, ověření podpisu a založení datové schránky.\n\nNěkteré úkony vyžadují doklad totožnosti. Objednávka na konkrétní čas zkrátí čekání u přepážky.' },
+  eshopy: { title: 'eShopy České Pošty', body: 'V e-shopech České pošty koupíte známky, dálniční známku, filatelii a vybrané dárkové předměty.\n\nObjednávku zaplatíte online a vyzvednete na pobočce, v boxu nebo necháte doručit. Stav objednávky sledujte v účtu e-shopu.' },
+  filatelie: { title: 'Filatelia a PostFila', body: 'PostFila vydává známky, obálky prvního dne a sběratelské soubory. Aktuální emise jsou v aktualitách.\n\nNákup je možný na filatelistické přepážce a v e-shopu. Emisní plány a ankety k známkám zveřejňujeme v této sekci.' },
+  dalnice: { title: 'Dálniční známky', body: 'Elektronickou dálniční známku koupíte na webu edalnice.cz, v e-shopu pošty a na vybraných přepážkách.\n\nZnámka je vázaná na registrační značku vozidla. Zkontrolujte stát, SPZ a dobu platnosti před platbou. Papírová kuponová známka se už nepoužívá.' }
 };
 
 // Branches and parcel boxes dataset
