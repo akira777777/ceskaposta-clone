@@ -1,0 +1,313 @@
+- generic [active] [ref=f4e1]:
+  - link "Přejít na hlavní obsah" [ref=f4e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f4e3]:
+    - generic [ref=f4e4]:
+      - link "Logo České pošty Česká pošta, s.p." [ref=f4e5] [cursor=pointer]:
+        - /url: /
+        - img "Logo České pošty" [ref=f4e6]
+        - generic [ref=f4e7]: Česká pošta, s.p.
+      - search [ref=f4e8]:
+        - generic [ref=f4e9]: Vyhledávání
+        - searchbox "Vyhledávání" [ref=f4e10]
+      - generic [ref=f4e12]:
+        - button "Zaregistrovat" [ref=f4e13] [cursor=pointer]
+        - button "Nastavení" [ref=f4e14] [cursor=pointer]
+        - button "Přihlásit se" [ref=f4e18] [cursor=pointer]
+      - link "EN" [ref=f4e22] [cursor=pointer]:
+        - /url: "#"
+  - navigation [ref=f4e23]:
+    - generic [ref=f4e24]:
+      - link "Služby" [ref=f4e26] [cursor=pointer]:
+        - /url: "#sluzby"
+      - link "Užitečné nástroje" [ref=f4e29] [cursor=pointer]:
+        - /url: "#nastroje"
+      - link "Rady a tipy" [ref=f4e32] [cursor=pointer]:
+        - /url: "#rady"
+      - link "Ke stažení" [ref=f4e35] [cursor=pointer]:
+        - /url: "#download"
+      - link "Kontakty" [ref=f4e38] [cursor=pointer]:
+        - /url: "#kontakty"
+      - link "Kariéra" [ref=f4e41] [cursor=pointer]:
+        - /url: "#kariera"
+      - link "O společnosti" [ref=f4e43] [cursor=pointer]:
+        - /url: "#o-nas"
+  - complementary "Rychlé odkazy" [ref=f4e45]:
+    - button "Sledovat zásilku" [ref=f4e46] [cursor=pointer]
+    - button "Vyhledat pobočku" [ref=f4e50] [cursor=pointer]
+    - button "Poslat zásilku" [ref=f4e54] [cursor=pointer]
+    - button "Kalkulátor zásilek" [ref=f4e58] [cursor=pointer]
+    - button "Poslat balík" [ref=f4e62] [cursor=pointer]
+  - main [ref=f4e66]:
+    - generic [ref=f4e67]:
+      - generic [ref=f4e68]:
+        - generic [ref=f4e69]:
+          - heading "Sledovat zásilku" [level=2] [ref=f4e70]
+          - generic [ref=f4e71]:
+            - generic [ref=f4e72]: Číslo zásilky
+            - textbox "Číslo zásilky" [ref=f4e73]:
+              - /placeholder: Zadejte číslo zásilky
+            - button "Vyhledat" [ref=f4e74] [cursor=pointer]
+        - generic [ref=f4e75]:
+          - article [ref=f4e76]:
+            - generic [ref=f4e77]: 14.09.2026
+            - link "Volební leták není reklamou" [ref=f4e78] [cursor=pointer]:
+              - /url: "#"
+          - article [ref=f4e79]:
+            - generic [ref=f4e80]: 01.09.2026
+            - link "Zvířata a rostliny z Jeseníků na známkách" [ref=f4e81] [cursor=pointer]:
+              - /url: "#"
+          - article [ref=f4e82]:
+            - generic [ref=f4e83]: 31.08.2026
+            - link "Třinec má novou hlavní poštu. Nabízí delší otevírací dobu a modernější obsluhu klientů" [ref=f4e84] [cursor=pointer]:
+              - /url: "#"
+          - link "Archiv aktualit ›" [ref=f4e85] [cursor=pointer]:
+            - /url: "#"
+      - generic [ref=f4e87]:
+        - article [ref=f4e88]:
+          - generic [ref=f4e89]:
+            - heading "Víc času užívat si důchod" [level=2] [ref=f4e90]
+            - paragraph [ref=f4e91]: Založte si Poštovní účet a důchod bude chodit za vámi
+            - generic [ref=f4e92]:
+              - text: Odměna až
+              - strong [ref=f4e93]: 2 500 Kč
+            - button "Zjistit více" [ref=f4e94] [cursor=pointer]
+        - article:
+          - generic:
+            - paragraph: PohledniceOnline
+            - heading "Schránka nikde poblíž?" [level=2]
+            - paragraph:
+              - text: Nevadí,
+              - strong: máme řešení.
+              - text: Pošlete Pohlednici Online přímo z mobilu!
+            - button "Poslat pohled"
+        - article:
+          - generic:
+            - heading "Poštovní výběr kartou" [level=2]
+            - paragraph: Vyberte hotovost na poště i bez bankomatu.
+            - button "Zjistit více"
+        - tablist "Bannery" [ref=f4e95]:
+          - button "Banner 1" [ref=f4e96] [cursor=pointer]
+          - button "Banner 2" [ref=f4e97] [cursor=pointer]
+          - button "Banner 3" [ref=f4e98] [cursor=pointer]
+    - generic [ref=f4e100]:
+      - link "Poštovní psaní a zásilky" [ref=f4e101] [cursor=pointer]:
+        - /url: "#sluzby"
+      - link "Platby a finance" [ref=f4e107] [cursor=pointer]:
+        - /url: "#sluzby"
+      - link "Reklamní zásilky" [ref=f4e112] [cursor=pointer]:
+        - /url: "#sluzby"
+      - link "Služby pošty online" [ref=f4e117] [cursor=pointer]:
+        - /url: "#sluzby"
+        - generic [aria-hidden] [ref=f4e118]: "@"
+      - link "Služby eGovernment" [ref=f4e120] [cursor=pointer]:
+        - /url: "#sluzby"
+      - link "eShopy České Pošty" [ref=f4e126] [cursor=pointer]:
+        - /url: "#sluzby"
+      - link "Filatelia a PostFila" [ref=f4e132] [cursor=pointer]:
+        - /url: "#sluzby"
+      - link "Dálniční známky" [ref=f4e139] [cursor=pointer]:
+        - /url: "#sluzby"
+    - generic [ref=f4e147]:
+      - generic [ref=f4e148]:
+        - heading "Kalkulátor zásilek" [level=2] [ref=f4e149]
+        - paragraph [ref=f4e150]: Orientační cena v demu. Nejde o oficiální ceník České pošty.
+        - generic [ref=f4e151]:
+          - button "Balíkovna" [ref=f4e152] [cursor=pointer]
+          - button "Do ruky" [ref=f4e153] [cursor=pointer]
+          - button "Na poštu" [ref=f4e154] [cursor=pointer]
+          - button "Psaní" [ref=f4e155] [cursor=pointer]
+        - generic [ref=f4e156]: "Hmotnost: 1 kg"
+        - slider [ref=f4e157]: "1"
+        - generic [ref=f4e158]:
+          - checkbox "Dobírka" [ref=f4e159]
+          - text: Dobírka
+        - generic [ref=f4e160]:
+          - checkbox "Křehké" [ref=f4e161]
+          - text: Křehké
+        - generic [ref=f4e162]:
+          - checkbox "Pojištění" [ref=f4e163]
+          - text: Pojištění
+        - generic [ref=f4e164]:
+          - generic [ref=f4e165]: Balíkovna (na výdejní místo / do BOXu) • Následující pracovní den
+          - generic [ref=f4e166]: 65 Kč
+          - list [ref=f4e167]:
+            - listitem [ref=f4e168]:
+              - generic [ref=f4e169]: Základní cena (Balíkovna (na výdejní místo / do BOXu))
+              - strong [ref=f4e170]: 65 Kč
+      - generic [ref=f4e171]:
+        - heading "Vyhledat pobočku" [level=2] [ref=f4e172]
+        - paragraph [ref=f4e173]: Demo databáze poboček a Balíkovna-BOXů.
+        - searchbox "Město, PSČ nebo název" [ref=f4e174]
+        - generic [ref=f4e175]:
+          - button "Czech POINT" [ref=f4e176] [cursor=pointer]
+          - button "Platba kartou" [ref=f4e177] [cursor=pointer]
+          - button "Nonstop" [ref=f4e178] [cursor=pointer]
+        - generic [ref=f4e179]:
+          - generic [ref=f4e180]:
+            - generic [ref=f4e181]:
+              - generic [ref=f4e182]: Pošta Praha 1 (Hlavní pošta)
+              - generic [ref=f4e183]: Pošta
+            - generic [ref=f4e184]: 📍 Jindřišská 909/14, 110 00 Praha 1
+            - generic [ref=f4e185]: "🕒 Po-Ne: 06:00 - 22:00"
+            - generic [ref=f4e186]: 💳 Platba kartou 🏛️ Czech POINT ♿ Bezbariérová
+            - button "Zvolit pobočku" [ref=f4e187] [cursor=pointer]
+          - generic [ref=f4e188]:
+            - generic [ref=f4e189]:
+              - generic [ref=f4e190]: Pošta Praha 2 (Vinohrady)
+              - generic [ref=f4e191]: Pošta
+            - generic [ref=f4e192]: 📍 Moravská 1530/9, 120 00 Praha 2
+            - generic [ref=f4e193]: "🕒 Po-Pá: 08:00 - 19:00, So: 08:00 - 12:00"
+            - generic [ref=f4e194]: 💳 Platba kartou 🏛️ Czech POINT ♿ Bezbariérová
+            - button "Zvolit pobočku" [ref=f4e195] [cursor=pointer]
+          - generic [ref=f4e196]:
+            - generic [ref=f4e197]:
+              - generic [ref=f4e198]: Balíkovna-BOX Metro Můstek
+              - generic [ref=f4e199]: Balíkovna-BOX
+            - generic [ref=f4e200]: 📍 Václavské náměstí (vestibul metra A/B), 110 00 Praha 1
+            - generic [ref=f4e201]: 🕒 Nonstop 24/7
+            - generic [ref=f4e202]: 💳 Platba kartou ♿ Bezbariérová ⚡ 24/7 Provoz
+            - button "Zvolit pobočku" [ref=f4e203] [cursor=pointer]
+          - generic [ref=f4e204]:
+            - generic [ref=f4e205]:
+              - generic [ref=f4e206]: Balíkovna-BOX OC Nový Smíchov
+              - generic [ref=f4e207]: Balíkovna-BOX
+            - generic [ref=f4e208]: 📍 Plzeňská 8, 150 00 Praha 5
+            - generic [ref=f4e209]: 🕒 Nonstop 24/7
+            - generic [ref=f4e210]: 💳 Platba kartou ♿ Bezbariérová ⚡ 24/7 Provoz
+            - button "Zvolit pobočku" [ref=f4e211] [cursor=pointer]
+          - generic [ref=f4e212]:
+            - generic [ref=f4e213]:
+              - generic [ref=f4e214]: Balíkovna Tabák Trafika Nádražní
+              - generic [ref=f4e215]: Balíkovna
+            - generic [ref=f4e216]: 📍 Nádražní 114, 150 00 Praha 5 - Smíchov
+            - generic [ref=f4e217]: "🕒 Po-Pá: 06:30 - 18:30, So: 07:00 - 13:00"
+            - generic [ref=f4e218]: 💳 Platba kartou
+            - button "Zvolit pobočku" [ref=f4e219] [cursor=pointer]
+          - generic [ref=f4e220]:
+            - generic [ref=f4e221]:
+              - generic [ref=f4e222]: Pošta Brno 2 (Nádražní)
+              - generic [ref=f4e223]: Pošta
+            - generic [ref=f4e224]: 📍 Nádražní 118/7, 602 00 Brno
+            - generic [ref=f4e225]: "🕒 Po-Pá: 07:00 - 20:00, So: 08:00 - 13:00"
+            - generic [ref=f4e226]: 💳 Platba kartou 🏛️ Czech POINT ♿ Bezbariérová
+            - button "Zvolit pobočku" [ref=f4e227] [cursor=pointer]
+          - generic [ref=f4e228]:
+            - generic [ref=f4e229]:
+              - generic [ref=f4e230]: Balíkovna-BOX Brno Hlavní Nádraží
+              - generic [ref=f4e231]: Balíkovna-BOX
+            - generic [ref=f4e232]: 📍 Benešova 4, 602 00 Brno
+            - generic [ref=f4e233]: 🕒 Nonstop 24/7
+            - generic [ref=f4e234]: 💳 Platba kartou ♿ Bezbariérová ⚡ 24/7 Provoz
+            - button "Zvolit pobočku" [ref=f4e235] [cursor=pointer]
+          - generic [ref=f4e236]:
+            - generic [ref=f4e237]:
+              - generic [ref=f4e238]: Pošta Ostrava 2
+              - generic [ref=f4e239]: Pošta
+            - generic [ref=f4e240]: 📍 Wattova 1046/19, 702 00 Ostrava
+            - generic [ref=f4e241]: "🕒 Po-Pá: 08:00 - 18:00"
+            - generic [ref=f4e242]: 💳 Platba kartou 🏛️ Czech POINT ♿ Bezbariérová
+            - button "Zvolit pobočku" [ref=f4e243] [cursor=pointer]
+  - contentinfo [ref=f4e244]:
+    - generic [ref=f4e245]:
+      - generic [ref=f4e246]:
+        - heading "O České poště" [level=4] [ref=f4e247]
+        - list [ref=f4e248]:
+          - listitem [ref=f4e249]:
+            - link "Bezpečnostní informace" [ref=f4e250] [cursor=pointer]:
+              - /url: "#o-nas"
+          - listitem [ref=f4e251]:
+            - link "Kontakty" [ref=f4e252] [cursor=pointer]:
+              - /url: "#kontakty"
+          - listitem [ref=f4e253]:
+            - link "Profil společnosti" [ref=f4e254] [cursor=pointer]:
+              - /url: "#o-nas"
+          - listitem [ref=f4e255]:
+            - link "Pošta Partner" [ref=f4e256] [cursor=pointer]:
+              - /url: "#o-nas"
+          - listitem [ref=f4e257]:
+            - link "Udržitelnost a ESG" [ref=f4e258] [cursor=pointer]:
+              - /url: "#o-nas"
+          - listitem [ref=f4e259]:
+            - link "Ochrana osobních údajů – GDPR" [ref=f4e260] [cursor=pointer]:
+              - /url: "#o-nas"
+      - generic [ref=f4e261]:
+        - heading "Užitečné informace" [level=4] [ref=f4e262]
+        - list [ref=f4e263]:
+          - listitem [ref=f4e264]:
+            - link "Ceník" [ref=f4e265] [cursor=pointer]:
+              - /url: "#download"
+          - listitem [ref=f4e266]:
+            - link "Formuláře a tiskopisy" [ref=f4e267] [cursor=pointer]:
+              - /url: "#download"
+          - listitem [ref=f4e268]:
+            - link "Poštovní podmínky" [ref=f4e269] [cursor=pointer]:
+              - /url: "#download"
+          - listitem [ref=f4e270]:
+            - link "Návody k balení a podání" [ref=f4e271] [cursor=pointer]:
+              - /url: "#rady"
+          - listitem [ref=f4e272]:
+            - link "Když Vás Pošta nezastihla" [ref=f4e273] [cursor=pointer]:
+              - /url: "#rady"
+          - listitem [ref=f4e274]:
+            - link "Celní řízení" [ref=f4e275] [cursor=pointer]:
+              - /url: "#sluzby"
+      - generic [ref=f4e276]:
+        - heading "Nabízíme" [level=4] [ref=f4e277]
+        - list [ref=f4e278]:
+          - listitem [ref=f4e279]:
+            - link "Široké spektrum služeb" [ref=f4e280] [cursor=pointer]:
+              - /url: "#sluzby"
+          - listitem [ref=f4e281]:
+            - link "Zákaznická karta" [ref=f4e282] [cursor=pointer]:
+              - /url: "#sluzby"
+          - listitem [ref=f4e283]:
+            - link "Veřejné zakázky" [ref=f4e284] [cursor=pointer]:
+              - /url: "#o-nas"
+          - listitem [ref=f4e285]:
+            - link "Spolupráci školám a studentům" [ref=f4e286] [cursor=pointer]:
+              - /url: "#kariera"
+          - listitem [ref=f4e287]:
+            - link "Prodej a pronájem nemovitostí" [ref=f4e288] [cursor=pointer]:
+              - /url: "#o-nas"
+          - listitem [ref=f4e289]:
+            - link "Prodej movitého majetku" [ref=f4e290] [cursor=pointer]:
+              - /url: "#o-nas"
+      - generic [ref=f4e291]:
+        - heading "Rychlé odkazy" [level=4] [ref=f4e292]
+        - list [ref=f4e293]:
+          - listitem [ref=f4e294]:
+            - link "Sledovat zásilku" [ref=f4e295] [cursor=pointer]:
+              - /url: "#trackBox"
+          - listitem [ref=f4e296]:
+            - link "Vyhledat PSČ" [ref=f4e297] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f4e298]:
+            - link "Spočítat cenu" [ref=f4e299] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f4e300]:
+            - link "Změna doručení" [ref=f4e301] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f4e302]:
+            - link "Průzkum spokojenosti" [ref=f4e303] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f4e304]:
+            - link "Mobilní aplikace" [ref=f4e305] [cursor=pointer]:
+              - /url: "#"
+    - generic [ref=f4e306]:
+      - generic [ref=f4e307]: © 2026 Česká pošta
+      - generic [ref=f4e308]:
+        - link "Přístupnost webu" [ref=f4e309] [cursor=pointer]:
+          - /url: "#o-nas"
+        - link "Mapa stránek" [ref=f4e310] [cursor=pointer]:
+          - /url: "#o-nas"
+      - generic [ref=f4e311]:
+        - link "Facebook" [ref=f4e312] [cursor=pointer]:
+          - /url: "#"
+          - text: f
+        - link "Instagram" [ref=f4e313] [cursor=pointer]:
+          - /url: "#"
+          - text: ig
+        - link "X" [ref=f4e314] [cursor=pointer]:
+          - /url: "#"
+          - text: x
