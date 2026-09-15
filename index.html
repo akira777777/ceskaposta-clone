@@ -3,29 +3,449 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Česká pošta, s.p.</title>
+    <title>Česká pošta, s.p. | Oficiální portál služeb (Demo)</title>
+    <meta name="description" content="Česká pošta - spolehlivý partner pro doručování zásilek, listovní služby, Balíkovnu a finanční servis po celé České republice.">
     <link rel="icon" href="https://www.ceskaposta.cz/o/cpost-liferay7-theme/images/favicon.ico">
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <!-- Header with Login Form -->
+    <!-- Accessibility Top Bar -->
+    <aside class="top-bar">
+        <div class="container top-bar-content">
+            <div class="top-bar-links">
+                <span>🇨🇿 Oficiální informační portál České pošty (Výukové demo)</span>
+                <span class="top-bar-badge">Bezpečné prostředí</span>
+            </div>
+            <div class="top-bar-links">
+                <a href="#kontakt">📞 Infolinka: <strong>800 200 000</strong> (bezplatně)</a>
+                <a href="javascript:void(0)" onclick="showSettings()">♿ Přístupnost a motiv</a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Header with Branding & Login Actions -->
     <header class="header">
-        <div class="header-content">
-            <a href="#" class="logo">
-                <span class="logo-icon">✉️</span>
-                Česká pošta, s.p.
+        <div class="container header-content">
+            <a href="#" class="logo" aria-label="Česká pošta domovská stránka">
+                <div class="logo-badge">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                        <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                    </svg>
+                </div>
+                <div class="logo-text-group">
+                    <span class="logo-title">Česká pošta</span>
+                    <span class="logo-subtitle">Státní podnik</span>
+                </div>
             </a>
+            
             <form id="loginForm" action="#" method="get" onsubmit="return false">
                 <div class="header-actions">
-                    <button type="button" class="btn-icon" onclick="showLoginModal()">🔍 Sledovat zásilku</button>
-                    <button type="button" class="btn-icon" onclick="showSettings()">⚙️ Nastavení</button>
-                    <button type="button" class="btn-icon" onclick="showLoginModal()">👤 Přihlásit se</button>
+                    <button type="button" class="btn-icon btn-icon-yellow" onclick="document.getElementById('trackingCodeInput')?.focus();window.scrollTo({top:0,behavior:'smooth'});" title="Vyhledat a sledovat balík">
+                        🔍 Sledovat zásilku
+                    </button>
+                    <button type="button" class="btn-icon" onclick="showSettings()" title="Nastavení vzhledu a přístupnosti">
+                        ⚙️ Nastavení
+                    </button>
+                    <button type="button" id="headerLoginBtn" class="btn-icon" onclick="showLoginModal()" title="Přihlášení do Klientské zóny">
+                        👤 Přihlásit se
+                    </button>
                 </div>
             </form>
         </div>
     </header>
 
-    <!-- Login Modal (hidden by default) -->
+    <!-- Navigation Bar -->
+    <nav class="nav-bar" aria-label="Hlavní navigace">
+        <div class="container nav-content">
+            <a href="#sledovani" class="nav-item active">📦 Sledování zásilek</a>
+            <a href="#sluzby" class="nav-item">📮 Naše služby</a>
+            <a href="#kalkulator" class="nav-item">🧮 Kalkulátor poštovného</a>
+            <a href="#pobocky" class="nav-item">📍 Pobočky a Balíkovny</a>
+            <a href="#aktuality" class="nav-item">📰 Aktuality</a>
+            <a href="#kontakt" class="nav-item">💬 Kontakt a podpora</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Track & Trace -->
+    <section id="sledovani" class="hero-section">
+        <div class="container hero-content">
+            <span class="hero-badge">⚡ Rychlé ověření zásilky</span>
+            <h1 class="hero-title">Sledujte cestu svého balíku v reálném čase</h1>
+            <p class="hero-subtitle">Mějte dokonalý přehled o poloze, termínu doručení a kódu pro vyzvednutí u všech typů poštovních zásilek.</p>
+
+            <!-- Tracking Card Form -->
+            <div class="tracking-card">
+                <form class="tracking-form" onsubmit="event.preventDefault(); trackParcel();">
+                    <div class="tracking-input-wrapper">
+                        <span class="tracking-input-icon">🔍</span>
+                        <input type="text" id="trackingCodeInput" class="tracking-input" placeholder="Zadejte číslo zásilky (např. DR123456789CZ)" aria-label="Číslo zásilky">
+                    </div>
+                    <button type="submit" class="btn-track">
+                        Vyhledat zásilku →
+                    </button>
+                </form>
+
+                <div class="tracking-quick-links">
+                    <span>Vyzkoušejte ukázkové zásilky:</span>
+                    <button type="button" class="sample-chip" onclick="quickTrack('DR123456789CZ')" title="Balík Do ruky v doručování">DR123456789CZ (V doručování)</button>
+                    <button type="button" class="sample-chip" onclick="quickTrack('NP987654321CZ')" title="Balík Na poštu připravený k vyzvednutí">NP987654321CZ (Na poště)</button>
+                    <button type="button" class="sample-chip" onclick="quickTrack('BA456789123CZ')" title="Balíkovna do samoobslužného BOXu">BA456789123CZ (V BOXu)</button>
+                </div>
+
+                <!-- Result Container (dynamically injected via login.js) -->
+                <div id="trackingResult" class="tracking-result-box hidden" role="region" aria-live="polite"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Services Section -->
+        <section id="sluzby" class="services-section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">📮 Naše klíčové služby</h2>
+                    <p class="section-subtitle">Komplexní poštovní, balíková, logistická a finanční řešení pro občany i firmy</p>
+                </div>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon-wrapper">📦</div>
+                    <h3 class="service-title">Balíkovna & Boxy</h3>
+                    <p class="service-desc">Rychlé doručení do 2. dne do nejhustší sítě výdejních míst a samoobslužných boxů po celé České republice již od 65 Kč.</p>
+                    <a href="#kalkulator" class="service-link">Spočítat cenu Balíkovny →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon-wrapper">🚚</div>
+                    <h3 class="service-title">Balík Do ruky</h3>
+                    <p class="service-desc">Garantované doručení přímo na vámi zvolenou adresu s možností změny termínu i místa doručení v den rozvozu.</p>
+                    <a href="#kalkulator" class="service-link">Odeslat Balík Do ruky →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon-wrapper">🏛️</div>
+                    <h3 class="service-title">Balík Na poštu</h3>
+                    <p class="service-desc">Doručení na jakoukoliv z více než 2 900 poboček České pošty s úložní dobou až 15 kalendářních dnů a SMS avízem.</p>
+                    <a href="#pobocky" class="service-link">Vyhledat pobočku →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon-wrapper">✉️</div>
+                    <h3 class="service-title">Doporučené psaní</h3>
+                    <p class="service-desc">Bezpečné zasílání důležitých dokumentů, smluv a cenných psaní s potvrzením o převzetí a elektronickým sledováním.</p>
+                    <a href="#kalkulator" class="service-link">Kalkulace psaní →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon-wrapper">💳</div>
+                    <h3 class="service-title">Platby a finance</h3>
+                    <p class="service-desc">Hotovostní i bezhotovostní poštovní poukázky, výplaty důchodů, platební styk a finanční služby Poštovní spořitelny.</p>
+                    <a href="#pobocky" class="service-link">Více o platbách →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon-wrapper">🛡️</div>
+                    <h3 class="service-title">Czech POINT & Ověřování</h3>
+                    <p class="service-desc">Vydávání výpisů z rejstříku trestů, katastru nemovitostí, ověřování podpisů (legalizace) a listin (vidimace).</p>
+                    <a href="#pobocky" class="service-link">Pobočky s Czech POINT →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Postage Calculator -->
+        <section id="kalkulator" class="calculator-section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">🧮 Kalkulátor poštovného</h2>
+                    <p class="section-subtitle">Spočítejte si přesnou cenu za odeslání zásilky podle parametrů a doplňkových služeb</p>
+                </div>
+            </div>
+
+            <div class="calculator-layout">
+                <div class="calculator-form">
+                    <div class="calc-group">
+                        <label class="calc-label">1. Vyberte typ služby</label>
+                        <div class="service-selector-grid">
+                            <div class="service-radio-card selected" data-service="balikovna" onclick="selectCalcService('balikovna')">
+                                <span class="service-radio-name">Balíkovna</span>
+                                <span class="service-radio-price">od 65 Kč</span>
+                            </div>
+                            <div class="service-radio-card" data-service="do_ruky" onclick="selectCalcService('do_ruky')">
+                                <span class="service-radio-name">Do ruky</span>
+                                <span class="service-radio-price">od 129 Kč</span>
+                            </div>
+                            <div class="service-radio-card" data-service="na_postu" onclick="selectCalcService('na_postu')">
+                                <span class="service-radio-name">Na poštu</span>
+                                <span class="service-radio-price">od 109 Kč</span>
+                            </div>
+                            <div class="service-radio-card" data-service="doporucene" onclick="selectCalcService('doporucene')">
+                                <span class="service-radio-name">Doporučené psaní</span>
+                                <span class="service-radio-price">od 62 Kč</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="calc-group">
+                        <label class="calc-label">2. Hmotnost zásilky</label>
+                        <div class="weight-range-wrapper">
+                            <input type="range" id="weightSlider" class="weight-slider" min="0.5" max="30" step="0.5" value="1.5" oninput="updateWeight(this.value)">
+                            <span id="weightDisplay" class="weight-display">1.5 kg</span>
+                        </div>
+                    </div>
+
+                    <div class="calc-group">
+                        <label class="calc-label">3. Doplňkové služby</label>
+                        <div class="checkbox-options">
+                            <label class="calc-checkbox-label">
+                                <input type="checkbox" id="calcCod" onchange="updateCalculator()">
+                                <span>Dobírka (+30 Kč)</span>
+                            </label>
+                            <label class="calc-checkbox-label">
+                                <input type="checkbox" id="calcFragile" onchange="updateCalculator()">
+                                <span>Křehké zboží (+45 Kč)</span>
+                            </label>
+                            <label class="calc-checkbox-label">
+                                <input type="checkbox" id="calcInsurance" onchange="updateCalculator()">
+                                <span>Připojištění do 50 000 Kč (+20 Kč)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculator Summary Card -->
+                <div class="calc-summary-card">
+                    <div>
+                        <h3 class="calc-summary-title">Cenová kalkulace</h3>
+                        <span id="calcServiceBadge" class="calc-service-badge">Balíkovna • Následující pracovní den</span>
+                        
+                        <ul id="calcBreakdownList" class="calc-breakdown-list">
+                            <li class="calc-breakdown-item">
+                                <span>Základní poštovné</span>
+                                <strong>65 Kč</strong>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div class="calc-total-row">
+                            <span class="calc-total-label">Celková cena s DPH:</span>
+                            <span id="calcTotalAmount" class="calc-total-amount">65 Kč</span>
+                        </div>
+                        <button type="button" class="btn-calc-cta" onclick="showDemoToast('Odeslání balíku: data byla předána do podacího formuláře (Demo).')">
+                            Přejít k podání zásilky →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Branch & Box Locator Section -->
+        <section id="pobocky" class="branches-section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">📍 Pobočky a Balíkovny</h2>
+                    <p class="section-subtitle">Vyhledejte nejbližší poštu, Balíkovnu nebo samoobslužný Balíkovna-BOX 24/7</p>
+                </div>
+            </div>
+
+            <div class="branch-filter-bar">
+                <input type="text" id="branchSearchInput" class="branch-search-input" placeholder="Zadejte město, ulici nebo PSČ (např. Praha, Brno, 110 00)..." oninput="fetchBranches()">
+                
+                <select id="branchTypeSelect" class="branch-type-select" onchange="fetchBranches()">
+                    <option value="all">Všechna místa</option>
+                    <option value="posta">Pouze pošty</option>
+                    <option value="box">Balíkovna-BOX (24/7)</option>
+                    <option value="balikovna">Partnerské Balíkovny</option>
+                </select>
+            </div>
+
+            <div class="branch-amenity-pills">
+                <button type="button" id="filterNonstop" class="filter-pill" onclick="toggleBranchPill('filterNonstop')">⚡ Otevřeno 24/7</button>
+                <button type="button" id="filterCardPayment" class="filter-pill" onclick="toggleBranchPill('filterCardPayment')">💳 Platba kartou</button>
+                <button type="button" id="filterCzechPoint" class="filter-pill" onclick="toggleBranchPill('filterCzechPoint')">🏛️ Czech POINT</button>
+                <button type="button" id="filterWheelchair" class="filter-pill" onclick="toggleBranchPill('filterWheelchair')">♿ Bezbariérový přístup</button>
+            </div>
+
+            <div id="branchesListGrid" class="branches-list-grid">
+                <!-- Dynamically populated by login.js -->
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="aktuality" class="news-section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">📰 Aktuality a tiskové zprávy</h2>
+                    <p class="section-subtitle">Důležité provozní informace, novinky a nově vydávané známky</p>
+                </div>
+                <span class="news-date">Aktualizováno: 15.09.2026</span>
+            </div>
+
+            <div class="news-grid">
+                <div class="news-item" onclick="showNewsModal(1)">
+                    <span class="news-category-badge">Balíkovna</span>
+                    <div class="news-date-small">14.09.2026</div>
+                    <div class="news-title-small">Nové balíkové služby a rozšíření sítě Balíkovna</div>
+                    <p class="news-summary-text">Česká pošta rozšiřuje síť výdejních boxů a partnerských míst Balíkovna na více než 9 000 míst po celé ČR pro ještě rychlejší vyzvednutí 24/7.</p>
+                </div>
+
+                <div class="news-item" onclick="showNewsModal(2)">
+                    <span class="news-category-badge">Pobočky</span>
+                    <div class="news-date-small">10.09.2026</div>
+                    <div class="news-title-small">Modernizace poboček a zrychlení služeb Czech POINT</div>
+                    <p class="news-summary-text">Na vybraných poštách instalujeme novou generaci vyvolávacích systémů a zkracujeme průměrnou čekací dobu občanů pod 5 minut.</p>
+                </div>
+
+                <div class="news-item" onclick="showNewsModal(3)">
+                    <span class="news-category-badge">Provoz</span>
+                    <div class="news-date-small">01.09.2026</div>
+                    <div class="news-title-small">Příprava na podzimní a předvánoční sezónu 2026</div>
+                    <p class="news-summary-text">Doporučené termíny pro odeslání balíků a tipy pro spolehlivé a včasné doručení před nadcházejícími svátky.</p>
+                </div>
+
+                <div class="news-item" onclick="showNewsModal(4)">
+                    <span class="news-category-badge">Filatelie</span>
+                    <div class="news-date-small">28.08.2026</div>
+                    <div class="news-title-small">Přírodní krásy Jeseníků na nových poštovních známkách</div>
+                    <p class="news-summary-text">Česká pošta uvádí do prodeje novou emisi příležitostných poštovních známek věnovanou vzácné fauně a flóře Chráněné krajinné oblasti Jeseníky.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact & Support Section -->
+        <section id="kontakt" class="contact-section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">💬 Kontakt a zákaznická podpora</h2>
+                    <p class="section-subtitle">Máte dotaz k zásilce nebo potřebujete poradit? Jsme vám plně k dispozici.</p>
+                </div>
+            </div>
+
+            <div class="contact-layout">
+                <div class="contact-card-info">
+                    <div class="contact-point">
+                        <span class="contact-point-icon">📞</span>
+                        <div>
+                            <div class="contact-point-title">Bezplatná zákaznická linka</div>
+                            <div class="contact-point-text"><a href="tel:+420800200000">800 200 000</a> (Po–Pá: 8:00 – 20:00)</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-point">
+                        <span class="contact-point-icon">✉️</span>
+                        <div>
+                            <div class="contact-point-title">E-mailová podpora</div>
+                            <div class="contact-point-text"><a href="mailto:info@ceskaposta.cz">info@ceskaposta.cz</a></div>
+                        </div>
+                    </div>
+
+                    <div class="contact-point">
+                        <span class="contact-point-icon">🏢</span>
+                        <div>
+                            <div class="contact-point-title">Sídlo společnosti</div>
+                            <div class="contact-point-text">Česká pošta, s.p., Politických vězňů 909/4, 225 99 Praha 1</div>
+                            <div class="contact-point-text" style="font-size:12px;color:var(--text-muted);margin-top:4px;">IČO: 47114983 | DIČ: CZ47114983</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(0,56,107,0.15);">
+                        <strong>Časté dotazy:</strong>
+                        <ul style="font-size:13px;margin-top:8px;line-height:1.8;padding-left:18px;">
+                            <li>Kde najdu PIN pro Balíkovna-BOX? V SMS nebo e-mailu.</li>
+                            <li>Jak prodloužit uložení balíku? Přes odkaz v avízu.</li>
+                            <li>Lze platit dobírku kartou? Ano, na všech poštách i boxech.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Interactive Support Form -->
+                <form class="contact-form" onsubmit="return handleContactSubmit(event)">
+                    <div class="form-group">
+                        <label for="contactName" class="form-label">Jméno a příjmení *</label>
+                        <input type="text" id="contactName" class="form-input" placeholder="Jan Novák" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactEmail" class="form-label">E-mailová adresa *</label>
+                        <input type="email" id="contactEmail" class="form-input" placeholder="jan.novak@email.cz" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactSubject" class="form-label">Předmět dotazu *</label>
+                        <input type="text" id="contactSubject" class="form-input" placeholder="Dotaz ke stavu zásilky / Služba" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactMessage" class="form-label">Text zprávy *</label>
+                        <textarea id="contactMessage" class="form-textarea" rows="4" placeholder="Zde uveďte podrobnosti vašeho dotazu..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        Odeslat zprávu podpoře
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h4>Sledování a doručení</h4>
+                <ul class="footer-links">
+                    <li><a href="#sledovani">Sledování zásilek (Track & Trace)</a></li>
+                    <li><a href="#kalkulator">Kalkulátor poštovného</a></li>
+                    <li><a href="#pobocky">Vyhledat pobočku nebo box</a></li>
+                    <li><a href="#sluzby">Balíkovna na výdejní místa</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>O společnosti</h4>
+                <ul class="footer-links">
+                    <li><a href="#aktuality">Tiskové zprávy a novinky</a></li>
+                    <li><a href="#sluzby">Služby pro občany</a></li>
+                    <li><a href="#sluzby">Služby pro firemní zákazníky</a></li>
+                    <li><a href="#kontakt">Kariéra v České poště</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Podpora a kontakt</h4>
+                <ul class="footer-links">
+                    <li><a href="#kontakt">Bezplatná infolinka: 800 200 000</a></li>
+                    <li><a href="#kontakt">E-mailová podpora</a></li>
+                    <li><a href="#kontakt">Časté dotazy (FAQ)</a></li>
+                    <li><a href="#kontakt">Reklamace a náhrady</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Právní informace</h4>
+                <ul class="footer-links">
+                    <li><a href="javascript:void(0)" onclick="showCookieSettings()">Nastavení souborů cookies</a></li>
+                    <li><a href="#kontakt">Ochrana osobních údajů (GDPR)</a></li>
+                    <li><a href="#sluzby">Poštovní a obchodní podmínky</a></li>
+                    <li><a href="javascript:void(0)" onclick="showSettings()">Volby přístupnosti</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p>© 2026 Česká pošta, s.p. Všechna práva vyhrazena. | IČO: 47114983 | Zapsána v obchodním rejstříku u Městského soudu v Praze.</p>
+            <p style="margin-top:4px;color:#64748b;font-size:11px;">Výukové a demonstrační prostředí – veškerá ověření probíhají bezpečně a lokálně.</p>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+         MODALS & OVERLAYS
+         ========================================================================== -->
+
+    <!-- Login Modal (Hidden by default; tested by Playwright) -->
     <div id="loginModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
         <div class="modal-content">
             <span class="close-btn" role="button" tabindex="0" aria-label="Zavřít" onclick="hideLoginModal()">&times;</span>
@@ -39,137 +459,152 @@
         </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="nav-bar">
-        <div class="nav-content">
-            <a href="#" class="nav-item">Pošta a zásilky</a>
-            <a href="#" class="nav-item">Platby a finance</a>
-            <a href="#" class="nav-item">Reklamní zásilky</a>
-            <a href="#" class="nav-item">Služby eGovernment</a>
-            <a href="#" class="nav-item">O společnosti</a>
+    <!-- Authenticated User Portal Modal (Moje pošta) -->
+    <div id="userPortalModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Klientská zóna Moje pošta">
+        <div class="modal-content modal-content-wide">
+            <span class="close-btn" role="button" tabindex="0" aria-label="Zavřít" onclick="hideUserPortal()">&times;</span>
+            <div class="portal-welcome">
+                <div class="portal-avatar">JN</div>
+                <div>
+                    <h2 style="margin:0;color:var(--post-blue);">Klientská zóna Moje pošta</h2>
+                    <div style="font-size:14px;color:var(--text-muted);">Přihlášený uživatel: <strong>Jan Novák</strong> (Klientský účet: CP-9824102)</div>
+                </div>
+            </div>
+
+            <div class="portal-stats-grid">
+                <div class="portal-stat-card">
+                    <div style="font-size:12px;color:var(--text-muted);font-weight:600;">OČEKÁVANÉ ZÁSILKY</div>
+                    <div style="font-size:24px;font-weight:800;color:var(--post-blue);margin-top:4px;">2 zásilky</div>
+                </div>
+                <div class="portal-stat-card">
+                    <div style="font-size:12px;color:var(--text-muted);font-weight:600;">VÝCHOZÍ BALÍKOVNA</div>
+                    <div style="font-size:14px;font-weight:700;color:var(--text-primary);margin-top:4px;">Balíkovna-BOX Můstek</div>
+                </div>
+            </div>
+
+            <h3 style="font-size:16px;font-weight:700;margin-bottom:12px;color:var(--post-blue);">Vaše aktivní zásilky k doručení</h3>
+            <div class="portal-shipments-list">
+                <div class="portal-shipment-card">
+                    <div>
+                        <div style="font-weight:700;color:var(--post-blue);">📦 DR123456789CZ (Balík Do ruky)</div>
+                        <div style="font-size:13px;color:var(--text-secondary);margin-top:2px;">Odesílatel: SportovníPotřeby.cz • <strong>V doručování (dnes 14:00 - 16:00)</strong></div>
+                    </div>
+                    <button type="button" class="btn-secondary" onclick="hideUserPortal();quickTrack('DR123456789CZ');">Sledovat</button>
+                </div>
+                <div class="portal-shipment-card">
+                    <div>
+                        <div style="font-weight:700;color:var(--post-blue);">📦 NP987654321CZ (Balík Na poštu)</div>
+                        <div style="font-size:13px;color:var(--text-secondary);margin-top:2px;">Pošta Praha 1, Jindřišská 14 • <strong>PIN kód pro vyzvednutí: 8472</strong></div>
+                    </div>
+                    <button type="button" class="btn-secondary" onclick="hideUserPortal();quickTrack('NP987654321CZ');">Sledovat</button>
+                </div>
+            </div>
+
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--border-color);">
+                <button type="button" class="btn-secondary" onclick="showDemoToast('Nastavení klientského účtu bylo otevřeno.')">Správa profilu</button>
+                <button type="button" class="btn-secondary" style="color:#ef4444;border-color:#fca5a5;" onclick="logoutUser()">Odhlásit se z účtu</button>
+            </div>
         </div>
-    </nav>
+    </div>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- News Section -->
-        <section class="news-section">
-            <div class="news-header">
-                <h2 class="news-title">Aktuality</h2>
-                <span class="news-date">14.09.2026</span>
-            </div>
-            <div class="news-grid">
-                <div class="news-item">
-                    <div class="news-date-small">14.09.2026</div>
-                    <div class="news-title-small">Volební leták není reklamou</div>
-                </div>
-                <div class="news-item">
-                    <div class="news-date-small">01.09.2026</div>
-                    <div class="news-title-small">Zvířata a rostliny z Jeseníků na známkách</div>
-                </div>
-                <div class="news-item">
-                    <div class="news-date-small">31.08.2026</div>
-                    <div class="news-title-small">Třinec má novou hlavní poštu. Nabízí delší otevírací dobu a modernější obsluhu klientů</div>
-                </div>
-            </div>
-        </section>
+    <!-- Settings & Accessibility Modal -->
+    <div id="settingsModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Nastavení přístupnosti a vzhledu">
+        <div class="modal-content">
+            <span class="close-btn" role="button" tabindex="0" aria-label="Zavřít" onclick="hideSettings()">&times;</span>
+            <h2>⚙️ Nastavení a přístupnost</h2>
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">Přizpůsobte si zobrazení portálu pro maximální čitelnost a komfort.</p>
 
-        <!-- Services Section -->
-        <section class="services-section">
-            <h2 class="services-title">Naše služby</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">📦</div>
-                    <h3 class="service-title">Poštovní psaní a zásilky</h3>
-                    <p class="service-desc">Odesílejte balíčky, dopisy a reklamní materiály po celé Evropě.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">💳</div>
-                    <h3 class="service-title">Platby a finance</h3>
-                    <p class="service-desc">Poštovní výběr kartou, platební karty a finanční služby.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📩</div>
-                    <h3 class="service-title">Reklamní zásilky</h3>
-                    <p class="service-desc">Tiskové materiály, letáky a propagační předměty.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📮</div>
-                    <h3 class="service-title">Dopisy a pohlednice</h3>
-                    <p class="service-desc">Odesílejte dopisy a ošlete pohlednici za pár korun.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Banner Section -->
-        <section class="banners-section">
-            <h2 class="banners-title">Rychlé odkazy</h2>
-            <div class="banners-grid">
-                <div class="banner-card">
-                    <div class="banner-image">💰</div>
-                    <div class="banner-content">
-                        <h3 class="banner-title">Poštovní výběr kartou</h3>
-                        <p class="banner-desc">Výběr hotovosti z bankomatů po celé ČR.</p>
+            <div class="settings-grid">
+                <div class="settings-group">
+                    <div class="settings-title">Barevný motiv</div>
+                    <div class="settings-options">
+                        <button type="button" class="theme-pill-btn active" data-theme="light" onclick="setTheme('light')">☀️ Světlý</button>
+                        <button type="button" class="theme-pill-btn" data-theme="dark" onclick="setTheme('dark')">🌙 Tmavý</button>
+                        <button type="button" class="theme-pill-btn" data-theme="high-contrast" onclick="setTheme('high-contrast')">👁️ Vysoký kontrast</button>
                     </div>
                 </div>
-                <div class="banner-card">
-                    <div class="banner-image">📋</div>
-                    <div class="banner-content">
-                        <h3 class="banner-title">Zbrojní list</h3>
-                        <p class="banner-desc">Vydávejte zbrojní listy přes CzechPoint.</p>
+
+                <div class="settings-group">
+                    <div class="settings-title">Velikost písma</div>
+                    <div class="settings-options">
+                        <button type="button" class="theme-pill-btn font-pill-btn active" data-scale="normal" onclick="setFontScale('normal')">Standardní</button>
+                        <button type="button" class="theme-pill-btn font-pill-btn" data-scale="large" onclick="setFontScale('large')">Větší (+15%)</button>
+                        <button type="button" class="theme-pill-btn font-pill-btn" data-scale="xlarge" onclick="setFontScale('xlarge')">Velké (+30%)</button>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Kontakt</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Call centrum: 296 100 100</a></li>
-                    <li><a href="#">Emailová podpora</a></li>
-                    <li><a href="#">Obchodní podmínky</a></li>
-                </ul>
+            <button type="button" class="btn-primary" style="margin-top:20px;" onclick="hideSettings();showDemoToast('Nastavení bylo uloženo.');">
+                Hotovo
+            </button>
+        </div>
+    </div>
+
+    <!-- Granular Cookie Preferences Modal -->
+    <div id="cookieModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Nastavení cookies">
+        <div class="modal-content">
+            <span class="close-btn" role="button" tabindex="0" aria-label="Zavřít" onclick="hideCookieSettings()">&times;</span>
+            <h2>🍪 Předvolby souborů cookies</h2>
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">Vyberte kategorie cookies, které nám dovolíte zpracovávat.</p>
+
+            <div class="cookie-category-item">
+                <div>
+                    <strong>Nezbytné cookies</strong>
+                    <div class="cookie-cat-desc">Zajišťují správné fungování webu a bezpečnost. Nelze je vypnout.</div>
+                </div>
+                <input type="checkbox" checked disabled>
             </div>
-            <div class="footer-section">
-                <h4>O nás</h4>
-                <ul class="footer-links">
-                    <li><a href="#">O společnosti</a></li>
-                    <li><a href="#">Karéra</a></li>
-                    <li><a href="#">Novinky</a></li>
-                </ul>
+
+            <div class="cookie-category-item">
+                <div>
+                    <strong>Analytické cookies</strong>
+                    <div class="cookie-cat-desc">Pomáhají nám anonymně vyhodnocovat návštěvnost a zlepšovat web.</div>
+                </div>
+                <input type="checkbox" id="cookieAnalytical" checked>
             </div>
-            <div class="footer-section">
-                <h4>Služby</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Sledování zásilek</a></li>
-                    <li><a href="#">Kalkulátor poštovného</a></li>
-                    <li><a href="#">Mapy poboček</a></li>
-                </ul>
+
+            <div class="cookie-category-item">
+                <div>
+                    <strong>Funkční cookies</strong>
+                    <div class="cookie-cat-desc">Pamatují si vaše volby (např. předvybraná pošta a velikost písma).</div>
+                </div>
+                <input type="checkbox" id="cookieFunctional" checked>
             </div>
-            <div class="footer-section">
-                <h4>Právní informace</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Ochrana osobních údajů (GDPR)</a></li>
-                    <li><a href="#">Soubory cookies</a></li>
-                    <li><a href="#">Bezpečnost</a></li>
-                </ul>
+
+            <div class="cookie-category-item">
+                <div>
+                    <strong>Marketingové cookies</strong>
+                    <div class="cookie-cat-desc">Umožňují zobrazovat relevantní nabídky poštovních služeb.</div>
+                </div>
+                <input type="checkbox" id="cookieMarketing">
+            </div>
+
+            <div style="display:flex;gap:10px;margin-top:20px;">
+                <button type="button" class="btn-primary" onclick="saveCookiePreferences()">Uložit předvolby</button>
+                <button type="button" class="btn-secondary" onclick="hideCookieSettings()">Zrušit</button>
             </div>
         </div>
-        <div class="footer-bottom">
-            © 2026 Česká pošta, s.p. Všechna práva vyhrazena. | IČO: 48391574 | Zapsána v obchodním rejstříku
-        </div>
-    </footer>
+    </div>
 
-    <!-- Cookie Banner -->
-    <div class="cookie-banner" id="cookieBanner">
+    <!-- News Reading Modal -->
+    <div id="newsModal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Detail aktuality">
+        <div class="modal-content modal-content-wide">
+            <span class="close-btn" role="button" tabindex="0" aria-label="Zavřít" onclick="hideNewsModal()">&times;</span>
+            <div id="newsModalMeta" style="font-size:12px;color:var(--text-muted);font-weight:600;margin-bottom:8px;"></div>
+            <h2 id="newsModalTitle" style="color:var(--post-blue);font-size:22px;line-height:1.3;margin-bottom:16px;"></h2>
+            <div id="newsModalBody" style="font-size:15px;line-height:1.7;color:var(--text-secondary);white-space:pre-line;"></div>
+            <div style="margin-top:24px;text-align:right;">
+                <button type="button" class="btn-secondary" onclick="hideNewsModal()">Zavřít článek</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Banner (Bottom Bar) -->
+    <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Informace o souborech cookies">
         <div class="cookie-content">
             <p class="cookie-text">
                 Kliknutím na tlačítko "Povolit všechny cookies" nám umožníte použití cookies pro analytické a marketingové účely. 
-                Kliknutím na odkaz "Více informací" máte možnost si cookies nastavit podle sebe.
+                Kliknutím na odkaz "Konfigurace" máte možnost si cookies nastavit podle sebe.
             </p>
             <div class="cookie-buttons">
                 <button class="btn-cookie btn-primary" onclick="acceptAllCookies()">Povolit všechny</button>
@@ -179,10 +614,8 @@
         </div>
     </div>
 
-    <!-- Test Script (for validation) -->
+    <!-- Validation & Interactive Scripts -->
     <script src="./test-script.js"></script>
-
-    <!-- Main JavaScript -->
     <script src="./login.js"></script>
 </body>
 </html>
