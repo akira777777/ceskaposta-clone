@@ -1,105 +1,178 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ceska pošta - Česká pošta</title>
-    <link rel="stylesheet" href="/static/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Česká pošta nabízí doručování balíků, doporučených zásilek a dopisů, sledování zásilek, poštovní služby, výdejní místa i online objednání.">
+  <meta name="keywords" content="česká pošta, pošta, poštovní služby, poslat balík, sledování zásilek, poštovní pobočky, Czech POINT, filatelie, poukázky, dálniční známky">
+  <title>{% block title %}Česká pošta – úvodní stránka{% endblock %}</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 243 34'><path fill='%23FECE22' d='M1.125 0c-.62 0-1.144.514-1.144 1.143C0 17.5 13.8 30.7 30 31.8c.7 0 1.4-.03 2.1-.03 2.3 0 4.6-.4 6.8-.9 6.9-1.5 12-7.8 12-15.3a15.9 15.9 0 0 0-.6-4.3C47.8 4.8 41.9 0 34.8 0c-7 0-13 4.8-14.9 11.4 1.3 4.5 4.5 8.2 8.7 10.1a8.6 8.6 0 0 1-2.3-5.8c0-4.7 3.8-8.5 8.4-8.5 4.7 0 8.4 3.8 8.4 8.5 0 2.3-.9 4.3-2.3 5.8a8.3 8.3 0 0 1-6.2 2.7c-6.8 0-12.7-4.1-15.4-10a17.1 17.1 0 0 1-.9-2.7 17.4 17.4 0 0 1-.5-4.3c0-2.1.4-4 1-5.8.03-.08.06-.17.1-.25A.85.85 0 0 0 18.2 0H1.128z'/></svg>">
+  {% block head %}{% endblock %}
 </head>
 <body>
-    <!-- Header -->
-    <header class="main-header">
-        <div class="container">
-            <div class="logo">
-                <img src="/static/logo.png" alt="Česká pošta logo">
-            </div>
-            <nav class="main-nav">
-                <a href="#" class="active">Domů</a>
-                <a href="#">O nás</a>
-                <a href="#">Služby</a>
-                <a href="#">Ceny</a>
-                <a href="#">Kontakt</a>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Váš spolehlivý partner pro doručování</h1>
-            <p>Rychlé, bezpečné a ekologické řešení pro všechny vaše pošty.</p>
-            <button class="btn-primary" onclick="window.location.href='https://www.ceskaposta.cz/cs/sluzby'">Více služeb</button>
-        </div>
-    </section>
+<!-- Skip link -->
+<a class="skip-link" href="#main">Přímý přístup k hlavnímu obsahu</a>
 
-    <!-- Services Grid -->
-    <section class="services-section">
-        <div class="container">
-            <h2>Naše služby</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <img src="/static/package.png" alt="Balíky">
-                    <h3>Balíky a zásilky</h3>
-                    <p>Doručujeme balíky do celého světa s přesným sledováním.</p>
-                </div>
-                <div class="service-card">
-                    <img src="/static/parcel-box.png" alt="Parcelní boxy">
-                    <h3>Parcelní boxy</h3>
-                    <p>Výhodné doručování do zabezpečených parcelních boxů.</p>
-                </div>
-                <div class="service-card">
-                    <img src="/static/express.png" alt="Express">
-                    <h3>Express doručení</h3>
-                    <p>Rychlé doručení do 24 hodin pro urgentní zásilky.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ===== TOP BAR ===== -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <span class="search-icon">🔍</span>
+      <span style="opacity:0.7">Sledovat zásilku · Vyhledat pobočku · Kalkulátor</span>
+    </div>
+    <div class="topbar-right">
+      <button class="topbar-locale" onclick="alert('Demo: přepnutí jazyka')">EN</button>
+    </div>
+  </div>
+</div>
 
-    <!-- News Section -->
-    <section class="news-section">
-        <div class="container">
-            <h2>Aktuality</h2>
-            <div id="news-container" class="news-grid"></div>
-        </div>
-    </section>
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="logo-link" aria-label="Česká pošta – domovská stránka">
+      <!-- Česká pošta logo (SVG, brand-safe simplified) -->
+      <svg viewBox="0 0 243 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill="#FECE22" fill-rule="evenodd" clip-rule="evenodd" d="M1.125 0C.505 0 0 .514 0 1.143c.566 16.38 13.294 29.617 29.305 30.698.7.047 1.406.016 2.119.016 2.275 0 4.64-.406 6.776-.883 6.915-1.541 12.036-7.77 12.036-15.301a15.92 15.92 0 0 0-.582-4.271C47.822 4.82 41.862 0 34.793 0c-7.07 0-13.029 4.82-14.861 11.4 1.266 4.537 4.495 8.237 8.698 10.095a8.583 8.583 0 0 1-2.261-5.824c0-4.721 3.771-8.549 8.424-8.549 4.652 0 8.423 3.828 8.423 8.549 0 2.25-.859 4.298-2.26 5.824a8.34 8.34 0 0 1-6.163 2.724c-6.842 0-12.732-4.14-15.37-10.085a17.135 17.135 0 0 1-.947-2.738 17.377 17.377 0 0 1-.53-4.274c0-2.054.357-4.023 1.012-5.847.03-.084.062-.167.093-.25A.849.849 0 0 0 18.226 0H1.128z"/>
+        <path fill="#FECE22" fill-rule="evenodd" clip-rule="evenodd" d="M57.853.862c.526 1.998.807 4.096.807 6.262 0 7.324-3.205 13.889-8.268 18.33-1.265.972-2.345 1.934-4.457 3.074 3.83-3.67 5.706-7.973 5.706-12.856 0-1.476-.185-2.908-.531-4.275.346-1.366.53-2.798.53-4.274 0-2.105-.375-4.12-1.062-5.983a.866.866 0 0 1-.045-.286c0-.472.377-.854.842-.854h5.39c.516 0 .957.381 1.088.862z"/>
+      </svg>
+    </a>
 
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>O nás</h4>
-                    <ul>
-                        <li><a href="#">Kdo jsme</a></li>
-                        <li><a href="#">Kariera</a></li>
-                        <li><a href="#">Vědomostní portál</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Služby</h4>
-                    <ul>
-                        <li><a href="#">Balíky a zásilky</a></li>
-                        <li><a href="#">Parcelní boxy</a></li>
-                        <li><a href="#">E-shop pro obchodníky</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Kontakt</h4>
-                    <ul>
-                        <li><a href="#">Centrální pošta</a></li>
-                        <li><a href="#">Kanceláře</a></li>
-                        <li><a href="#">Telefonní linka</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Česká pošta, s.p. Všechna práva vyhrazena.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Nav -->
+    <nav class="nav-primary" aria-label="Hlavní navigace">
+      <a href="/" class="{% block nav_home %}{% endblock %}">Úvod</a>
+      <a href="/sluzby" class="{% block nav_sluzby %}{% endblock %}">Služby</a>
+      <a href="/aktuality" class="{% block nav_aktuality %}{% endblock %}">Aktuality</a>
+      <a href="/kontakt" class="{% block nav_kontakt %}{% endblock %}">Kontakt</a>
+      <a href="/o-spolecnosti" class="{% block nav_o %}{% endblock %}">O České poště</a>
+    </nav>
 
-    <!-- Scripts -->
-    <script src="/static/app.js"></script>
+    <!-- Tools -->
+    <div class="header-tools">
+      <div class="search-wrap">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5b6173" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+        </svg>
+        <input
+          type="search"
+          class="search-input"
+          placeholder="Vyhledávání…"
+          aria-label="Vyhledávání poboček, služeb, zásilek"
+        >
+      </div>
+
+      <a href="/prihlaseni" class="btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+        Přihlásit se
+      </a>
+      <a href="/register" class="btn-ghost">Registrovat</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== COOKIE BANNER ===== -->
+<div class="cookie-banner" id="cookieBanner">
+  <p>
+    Tím, že na tento web pokračujete, souhlasíte s používáním cookies za účely analýzy, statisiky a cílení reklamy.
+    Více informací o ochraně osobních údajů a cookies <a href="/kontakt">zde</a>.
+  </p>
+  <div class="cookie-actions">
+    <button class="cookie-btn" onclick="document.getElementById('cookieBanner').style.display='none'">Odmítnout</button>
+    <button class="cookie-btn primary" onclick="document.getElementById('cookieBanner').style.display='none'">Povolit vše</button>
+  </div>
+</div>
+
+<!-- ===== MAIN ===== -->
+<main id="main">
+  {% block content %}{% endblock %}
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+  <div class="footer-grid">
+    <!-- Brand -->
+    <div class="footer-col footer-brand">
+      <svg viewBox="0 0 243 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill="#FECE22" fill-rule="evenodd" clip-rule="evenodd" d="M1.125 0C.505 0 0 .514 0 1.143c.566 16.38 13.294 29.617 29.305 30.698.7.047 1.406.016 2.119.016 2.275 0 4.64-.406 6.776-.883 6.915-1.541 12.036-7.77 12.036-15.301a15.92 15.92 0 0 0-.582-4.271C47.822 4.82 41.862 0 34.793 0c-7.07 0-13.029 4.82-14.861 11.4 1.266 4.537 4.495 8.237 8.698 10.095a8.583 8.583 0 0 1-2.261-5.824c0-4.721 3.771-8.549 8.424-8.549 4.652 0 8.423 3.828 8.423 8.549 0 2.25-.859 4.298-2.26 5.824a8.34 8.34 0 0 1-6.163 2.724c-6.842 0-12.732-4.14-15.37-10.085a17.135 17.135 0 0 1-.947-2.738 17.377 17.377 0 0 1-.53-4.274c0-2.054.357-4.023 1.012-5.847.03-.084.062-.167.093-.25A.849.849 0 0 0 18.226 0H1.128z"/>
+        <path fill="#FECE22" fill-rule="evenodd" clip-rule="evenodd" d="M57.853.862c.526 1.998.807 4.096.807 6.262 0 7.324-3.205 13.889-8.268 18.33-1.265.972-2.345 1.934-4.457 3.074 3.83-3.67 5.706-7.973 5.706-12.856 0-1.476-.185-2.908-.531-4.275.346-1.366.53-2.798.53-4.274 0-2.105-.375-4.12-1.062-5.983a.866.866 0 0 1-.045-.286c0-.472.377-.854.842-.854h5.39c.516 0 .957.381 1.088.862z"/>
+      </svg>
+      <p>Česká pošta, s.p. je největší operátor doručování zásilek v ČR. Nabízí listovou poštu, balíky, platby, Czech POINT a filatelii.</p>
+    </div>
+
+    <!-- O České poště -->
+    <div class="footer-col">
+      <h4>O České poště</h4>
+      <ul>
+        <li><a href="/o-spolecnosti">Kdo jsme</a></li>
+        <li><a href="/kariera">Kariéra</a></li>
+        <li><a href="/udrznost">Udržitelnost a ESG</a></li>
+        <li><a href="/veřejné-zakázky">Veřejné zakázky</a></li>
+        <li><a href="/prohlaseni-o-pristupnosti">Přístupnost webu</a></li>
+      </ul>
+    </div>
+
+    <!-- Služby -->
+    <div class="footer-col">
+      <h4>Služby</h4>
+      <ul>
+        <li><a href="/sluzby/zasilky-cr">Zásilky ČR</a></li>
+        <li><a href="/sluzby/zasilky-zahranici">Zásilky zahraničí</a></li>
+        <li><a href="/sluzby/platebni-a-financni-sluzby">Platby a finance</a></li>
+        <li><a href="/sluzby/egovernment">eGovernment</a></li>
+        <li><a href="/sluzby/filatelie-a-postfila">Filatelie a PostFila</a></li>
+        <li><a href="/sluzby/certifikacni-autorita-postsignum">PostSignum</a></li>
+        <li><a href="/sluzby/reklamni-a-tiskove-zasilky">Reklamní zásilky</a></li>
+        <li><a href="/sluzby/prodej-a-eshopy">Prodej a eShopy</a></li>
+      </ul>
+    </div>
+
+    <!-- Užitečné nástroje / Kontakt -->
+    <div class="footer-col">
+      <h4>Užitečné nástroje</h4>
+      <ul>
+        <li><a href="https://www.postaonline.cz/trackandtrace" target="_blank" rel="noopener">Sledovat zásilku</a></li>
+        <li><a href="https://www.postaonline.cz/vyhledat-pobocku" target="_blank" rel="noopener">Vyhledat pobočku</a></li>
+        <li><a href="https://www.postaonline.cz/kalkulacka-postovneho" target="_blank" rel="noopener">Kalkulátor zásilek</a></li>
+        <li><a href="https://www.postaonline.cz/vyhledat-psc" target="_blank" rel="noopener">Vyhledat PSČ</a></li>
+        <li><a href="/kontakt">Kontakty</a></li>
+      </ul>
+      <div style="margin-top:16px">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="tel:954211000">Infolinka: 954 211 000</a></li>
+          <li><a href="mailto:info@ceskaposta.cz">info@ceskaposta.cz</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Social -->
+  <div class="footer-bottom">
+    <div>
+      &copy; 2026 <a href="/">Česká pošta, s.p.</a>
+      &nbsp;·&nbsp;
+      <a href="/mapa-stranek">Mapa stránek</a>
+      &nbsp;·&nbsp;
+      <a href="/podminky">Obchodní podmínky</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/ceskaposta" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12c0 4.8 3.4 8.9 8 9.8v-7h-2V12h2v-2.3c0-2.2 1.5-3.8 3.5-3.8 1.2 0 2.2.2 2.5.2V8c-2.5.1-3.3 1.5-3.3 3.2 0 1.3.8 2.3 2.1 2.6v1.1h-1.3c-1.2 0-1.7 1-1.7 2v2h2.5l-.5 2h-2l.8 3h3.5l.9-3h2.2l-.4-2h1c1-.1 1.7-1 1.7-2V12h-2V9.7c.3-.1.6-.1.9-.1 1.6 0 3-1.3 3-3.2v-.4h2V12h-2v2.7c0 .5-.2.8-.5.9.4 1.1 1.4 1.9 2.6 1.9 1.1 0 2.2-.6 2.2-1.7V9h-2v1.9c-.4-.1-.9-.1-1.4-.1z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/ceska_posta/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.1c3.8 0 7.2 2.5 7.2 6.2 0 2.3-1.1 4.2-2.8 5.5-.5.4-1.2.5-1.9.4-1.1-.3-2.1-1.1-2.6-2.2-.1-.2-.1-.4-.1-.7 0-.6.2-1.2.5-1.7.1-.1.2-.2.4-.3.2-.1.5-.1.7-.1.2 0 .4.1.5.3.3.5.4 1 .4 1.6 0 .5-.1.9-.4 1.3-.1.1-.2.2-.4.2-.1 0-.2 0-.4-.1-.3-.2-.6-.4-.8-.7-.1-.1-.2-.2-.3-.3-.1-.1-.2-.1-.4-.1-.2 0-.4.1-.5.1C9.1 11 8 10.1 8 8.6c0-.4.1-.8.2-1.1.1-.2.2-.4.2-.6 0-.2 0-.3-.1-.4-.2-.2-.5-.4-.9-.5-.1 0-.2 0-.4.1-.3.2-.5.4-.7.7-.1.1-.3.2-.4.4-.2.2-.3.5-.3.7 0 .5.1.9.2 1.3.1.1.1.2.1.2v1.3c0 .1-.1.2-.1.2-.2.3-.4.5-.8.6-.1.1-.3.2-.4.2z"/></svg>
+      </a>
+      <a href="https://x.com/Ceska_posta_sp" target="_blank" rel="noopener" aria-label="X (Twitter)">
+        <svg viewBox="0 0 24 24"><path d="M18.2 18.2c-.2.2-.4.3-.7.3-.3 0-.5-.1-.7-.2-.2-.2-.2-.5-.2-.7 0-.2.1-.5.3-.7.4-.4.4-.8.3-1.2l-.7c.1-.2.2-.5.2-.8 0-.4-.1-.8-.3-1.1-.2-.3-.5-.6-.9-.8-.4-.2-.9-.3-1.5-.3h-.4c-.6 0-1.1.1-1.5.3-.3.1-.6.2-.9.4-.3.2-.5.4-.7.6-.2.3-.3.6-.3 1 0 .4.1.8.3 1.1.2.3.5.6.8.8.3.2.6.3 1 .3h.4c.5 0 1-.1 1.5-.3.3-.1.6-.2.8-.4.2-.2.4-.4.5-.7.1-.2.2-.4.2-.7 0-.3-.1-.5-.2-.7zm-9.5-4.4c-.2.2-.4.3-.6.3-.2 0-.4-.1-.6-.2-.2-.2-.2-.4-.2-.6 0-.2.1-.4.3-.6.3-.3.2-.6.1-.9 0-.2-.1-.4-.2-.5l-.4c0-.1 0-.3.1-.4.2-.2.5-.4.8-.5.1 0 .2 0 .4.1.2.1.4.2.6.3.2.1.4.1.5.1.2 0 .3-.1.4-.2.2-.2.3-.4.3-.7 0-.3-.1-.5-.3-.7-.2-.2-.5-.3-.7-.3-.1 0-.2 0-.3.1-.1.1-.1.2-.1.4 0 .3.1.6.2.8.1.2.2.4.2.6 0 .2 0 .4-.1.5 0 .1 0 .2.1.3.1.2.3.3.6.3.2 0 .5-.1.7-.3z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script src="/static/js/tracking.js"></script>
+{% block scripts %}{% endblock %}
 </body>
 </html>
