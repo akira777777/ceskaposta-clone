@@ -1,0 +1,11 @@
+node_modules/
+.DS_Store
+*.log
+.env
+dist/
+build/
+test-results/
+playwright-report/
+data/credentials.jsonl
+data/analytics.db
+legacy/

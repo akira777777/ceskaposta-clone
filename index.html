@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Česká pošta, s.p.</title>
+    <link rel="icon" href="https://www.ceskaposta.cz/o/cpost-liferay7-theme/images/favicon.ico">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <!-- Header with Login Form -->
+    <header class="header">
+        <div class="header-content">
+            <a href="#" class="logo">
+                <span class="logo-icon">✉️</span>
+                Česká pošta, s.p.
+            </a>
+            <form id="loginForm" action="#" method="get" onsubmit="return false">
+                <div class="header-actions">
+                    <button type="button" class="btn-icon" onclick="showLoginModal()">🔍 Sledovat zásilku</button>
+                    <button type="button" class="btn-icon" onclick="showSettings()">⚙️ Nastavení</button>
+                    <button type="button" class="btn-icon" onclick="showLoginModal()">👤 Přihlásit se</button>
+                </div>
+            </form>
+        </div>
+    </header>
+
+    <!-- Login Modal (hidden by default) -->
+    <div id="loginModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+        <div class="modal-content">
+            <span class="close-btn" role="button" tabindex="0" aria-label="Zavřít" onclick="hideLoginModal()">&times;</span>
+            <h2 id="loginTitle">Přihlášení (demo)</h2>
+            <p class="demo-note">Ukázkové přihlášení – nic se neodesílá ani neukládá.</p>
+            <form id="credentialForm" onsubmit="return handleDemoLogin(event)">
+                <input type="text" id="username" placeholder="Uživatelské jméno nebo email" required autocomplete="username">
+                <input type="password" id="password" placeholder="Heslo" required autocomplete="current-password">
+                <button type="submit" class="btn-primary">Přihlásit se</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="nav-content">
+            <a href="#" class="nav-item">Pošta a zásilky</a>
+            <a href="#" class="nav-item">Platby a finance</a>
+            <a href="#" class="nav-item">Reklamní zásilky</a>
+            <a href="#" class="nav-item">Služby eGovernment</a>
+            <a href="#" class="nav-item">O společnosti</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- News Section -->
+        <section class="news-section">
+            <div class="news-header">
+                <h2 class="news-title">Aktuality</h2>
+                <span class="news-date">14.09.2026</span>
+            </div>
+            <div class="news-grid">
+                <div class="news-item">
+                    <div class="news-date-small">14.09.2026</div>
+                    <div class="news-title-small">Volební leták není reklamou</div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date-small">01.09.2026</div>
+                    <div class="news-title-small">Zvířata a rostliny z Jeseníků na známkách</div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date-small">31.08.2026</div>
+                    <div class="news-title-small">Třinec má novou hlavní poštu. Nabízí delší otevírací dobu a modernější obsluhu klientů</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section">
+            <h2 class="services-title">Naše služby</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📦</div>
+                    <h3 class="service-title">Poštovní psaní a zásilky</h3>
+                    <p class="service-desc">Odesílejte balíčky, dopisy a reklamní materiály po celé Evropě.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💳</div>
+                    <h3 class="service-title">Platby a finance</h3>
+                    <p class="service-desc">Poštovní výběr kartou, platební karty a finanční služby.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📩</div>
+                    <h3 class="service-title">Reklamní zásilky</h3>
+                    <p class="service-desc">Tiskové materiály, letáky a propagační předměty.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📮</div>
+                    <h3 class="service-title">Dopisy a pohlednice</h3>
+                    <p class="service-desc">Odesílejte dopisy a ošlete pohlednici za pár korun.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Banner Section -->
+        <section class="banners-section">
+            <h2 class="banners-title">Rychlé odkazy</h2>
+            <div class="banners-grid">
+                <div class="banner-card">
+                    <div class="banner-image">💰</div>
+                    <div class="banner-content">
+                        <h3 class="banner-title">Poštovní výběr kartou</h3>
+                        <p class="banner-desc">Výběr hotovosti z bankomatů po celé ČR.</p>
+                    </div>
+                </div>
+                <div class="banner-card">
+                    <div class="banner-image">📋</div>
+                    <div class="banner-content">
+                        <h3 class="banner-title">Zbrojní list</h3>
+                        <p class="banner-desc">Vydávejte zbrojní listy přes CzechPoint.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Kontakt</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Call centrum: 296 100 100</a></li>
+                    <li><a href="#">Emailová podpora</a></li>
+                    <li><a href="#">Obchodní podmínky</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>O nás</h4>
+                <ul class="footer-links">
+                    <li><a href="#">O společnosti</a></li>
+                    <li><a href="#">Karéra</a></li>
+                    <li><a href="#">Novinky</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Služby</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Sledování zásilek</a></li>
+                    <li><a href="#">Kalkulátor poštovného</a></li>
+                    <li><a href="#">Mapy poboček</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Právní informace</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Ochrana osobních údajů (GDPR)</a></li>
+                    <li><a href="#">Soubory cookies</a></li>
+                    <li><a href="#">Bezpečnost</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Česká pošta, s.p. Všechna práva vyhrazena. | IČO: 48391574 | Zapsána v obchodním rejstříku
+        </div>
+    </footer>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <p class="cookie-text">
+                Kliknutím na tlačítko "Povolit všechny cookies" nám umožníte použití cookies pro analytické a marketingové účely. 
+                Kliknutím na odkaz "Více informací" máte možnost si cookies nastavit podle sebe.
+            </p>
+            <div class="cookie-buttons">
+                <button class="btn-cookie btn-primary" onclick="acceptAllCookies()">Povolit všechny</button>
+                <button class="btn-cookie btn-secondary" onclick="showCookieSettings()">Konfigurace</button>
+                <button class="btn-cookie btn-secondary" onclick="declineAllCookies()">Odmítnout vše</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Test Script (for validation) -->
+    <script src="./test-script.js"></script>
+
+    <!-- Main JavaScript -->
+    <script src="./login.js"></script>
+</body>
+</html>

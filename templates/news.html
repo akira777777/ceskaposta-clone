@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>Aktuality a informace</h1>
+        <p>Sledujte naše nejnovější zprávy o službách České pošty.</p>
+    </div>
+</section>
+
+<section class="news-section">
+    <div class="container">
+        {% if news %}
+            <div class="news-grid">
+                {% for item in news %}
+                    <article class="news-card">
+                        <h3>{{ item.title }}</h3>
+                        <p class="date">{{ item.date }}</p>
+                        <p>{{ item.summary|truncate(200) }}</p>
+                        <a href="#" class="read-more">Číst více</a>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Nyní nejsou dostupné žádné novinky.</p>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

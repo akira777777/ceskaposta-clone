@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>Kontaktujte nás</h1>
+        <p>Máte dotaz nebo potřebujete poradit? Ozvěte se nám.</p>
+    </div>
+</section>
+
+<section class="contact-section">
+    <div class="container">
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; max-width: 1200px; margin: 0 auto;">
+            <!-- Contact Info -->
+            <div>
+                <h2 style="color: #1a5f7a; font-size: 2rem; margin-bottom: 1.5rem;">Naše kontakty</h2>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <strong style="display: block; color: #333; margin-bottom: 0.5rem;">Pošta České pošty, s.p.</strong>
+                    <span style="color: #666;">Václavské náměstí 21<br>110 00 Praha 1</span>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <strong style="display: block; color: #333; margin-bottom: 0.5rem;">Telefon</strong>
+                    <a href="tel:+420800200000" style="color: #e67e22; text-decoration: none;">800 200 000</a><br>
+                    <small style="color: #999;">(zvolený tarif)</small>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <strong style="display: block; color: #333; margin-bottom: 0.5rem;">E-mail</strong>
+                    <a href="mailto:info@ceskaposta.cz" style="color: #e67e22; text-decoration: none;">info@ceskaposta.cz</a>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <strong style="display: block; color: #333; margin-bottom: 0.5rem;">Otevírací doba</strong>
+                    <span style="color: #666;">Po - Pá: 8:00 - 17:00<br>So - Ne: zavřeno</span>
+                </div>
+
+                <!-- Map placeholder -->
+                <div style="background-color: #e9ecef; border-radius: 10px; height: 250px; display: flex; align-items: center; justify-content: center;">
+                    <p style="color: #666;">Zde bude mapa</p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div>
+                <h2 style="color: #1a5f7a; font-size: 2rem; margin-bottom: 1.5rem;">Odeslat zprávu</h2>
+                
+                <form onsubmit="event.preventDefault(); alert('Děkujeme za vaši zprávu! Odezvíme se co nejdříve.');">
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="name" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Jméno a příjmení *</label>
+                        <input type="text" id="name" name="name" required 
+                               placeholder="Vaše jméno"
+                               style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px;">
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="email" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">E-mail *</label>
+                        <input type="email" id="email" name="email" required 
+                               placeholder="vaše@email.com"
+                               style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px;">
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="phone" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Telefon</label>
+                        <input type="tel" id="phone" name="phone" 
+                               placeholder="+420 ..."
+                               style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px;">
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="subject" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Předmět *</label>
+                        <input type="text" id="subject" name="subject" required 
+                               placeholder="O čem je vaše zpráva?"
+                               style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px;">
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="message" style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Zpráva *</label>
+                        <textarea id="message" name="message" rows="6" required 
+                                  placeholder="Vaše zpráva..."
+                                  style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px; resize: vertical;">
+</textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary" 
+                            style="width: 100%; padding: 1rem; font-size: 1.1rem;">
+                        Odeslat zprávu
+                    </button>
+
+                    <p style="margin-top: 1rem; color: #999; font-size: 0.85rem;">
+                        * Označené položky jsou povinné.<br>
+                        Vaše údaje budou zpracovány v souladu s naším zásadním ochrany osobních údajů.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

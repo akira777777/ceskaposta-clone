@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>Vítejte, {{ username }}!</h1>
+        <p>Přihlášeno: {{ login_time }}</p>
+    </div>
+</section>
+
+<section class="dashboard-section" style="padding: 40px 20px; background-color: #f8f9fa;">
+    <div class="container">
+        <!-- Dashboard Navigation -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <h2 style="color: #1a5f7a; font-size: 1.8rem;">Váš osobní účet</h2>
+            <button onclick="window.location.href='/logout'" 
+                    style="padding: 0.6rem 1.5rem; background-color: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                Odhlásit se
+            </button>
+        </div>
+
+        <!-- Quick Stats -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+            <div style="background-color: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                <p style="color: #999; font-size: 0.9rem; margin-bottom: 0.5rem;">Aktivní zásilky</p>
+                <p style="font-size: 2rem; color: #1a5f7a; font-weight: bold;">3</p>
+            </div>
+            <div style="background-color: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                <p style="color: #999; font-size: 0.9rem; margin-bottom: 0.5rem;">Doručeno dnes</p>
+                <p style="font-size: 2rem; color: #e67e22; font-weight: bold;">12</p>
+            </div>
+            <div style="background-color: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                <p style="color: #999; font-size: 0.9rem; margin-bottom: 0.5rem;">Odesláno tento měsíc</p>
+                <p style="font-size: 2rem; color: #3498db; font-weight: bold;">47</p>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <h3 style="color: #1a5f7a; margin-bottom: 1.5rem; font-size: 1.5rem;">Nejnovější zásilky</h3>
+        
+        <table style="width: 100%; background-color: white; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+            <thead>
+                <tr style="background-color: #f8f9fa;">
+                    <th style="padding: 1rem; text-align: left; color: #666;">ID zásilky</th>
+                    <th style="padding: 1rem; text-align: left; color: #666;">Odesláno do</th>
+                    <th style="padding: 1rem; text-align: left; color: #666;">Stav</th>
+                    <th style="padding: 1rem; text-align: left; color: #666;">Akce</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 1rem; border-top: 1px solid #f0f0f0;">CZ123456789</td>
+                    <td style="padding: 1rem; border-top: 1pm; color: #666;">Dnes, 18:00</td>
+                    <td style="padding: 1rem; border-top: 1px solid #f0f0f0;"><span style="background-color: #28a745; color: white; padding: 0.3rem 0.6rem; border-radius: 20px; font-size: 0.8rem;">Doručeno</span></td>
+                    <td style="padding: 1rem; border-top: 1px solid #f0f0f0;"><button onclick="alert('Detail zásilky CZ123456789')" style="color: #e67e22; background: none; border: none; cursor: pointer;">Zobrazit</button></td>
+                </tr>
+                <tr>
+                    <td style="padding: 1rem; border-top: 1px solid #f0f0f0;">CZ987654321</td>
+                    <td style="padding: 1rem; border-top: 1px solid #f0f0f0;">Včera, 14:30</td>
+                    <td style="padding: 1rem; border-top: 1px solid #f0f0f0;"><span style="background-color: #ffc107; color: black; padding: 0.3rem 0.6rem; border-radius: 20px; font-size: 0.8rem;">Na cestě</span></td>
+                    <td style="padding: 1rem; border-top: 1px solid #f0f0f0;"><button onclick="alert('Detail zásilky CZ987654321')" style="color: #e67e22; background: none; border: none; cursor: pointer;">Zobrazit</button></td>
+                </tr>
+                <tr>
+                    <td style="padding: 1rem; border-top: 1px solid #f0f0f0;">CZ555666777</td>
+                    <td style="padding: 1rem; border-top: 1px solid #f0f0f0;">23. září, 09:15</td>
+                    <td style="padding: 1rem; border-top: 1px solid #f0f0f0;"><span style="background-color: #dc3545; color: white; padding: 0.3rem 0.6rem; border-radius: 20px; font-size: 0.8rem;">Neúspěšné</span></td>
+                    <td style="padding: 1rem; border-top: 1px solid #f0f0f0;"><button onclick="alert('Detail zásilky CZ555666777')" style="color: #e67e22; background: none; border: none; cursor: pointer;">Zobrazit</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Quick Actions -->
+        <h3 style="color: #1a5f7a; margin-bottom: 1.5rem; font-size: 1.5rem;">Rychlé akce</h3>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+            <button onclick="alert('Odeslat novou zásilku')" 
+                    style="padding: 1rem; background-color: #1a5f7a; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem;">
+                📦 Odeslat zásilku
+            </button>
+            <button onclick="alert('Přidat poštovní schránku')" 
+                    style="padding: 1rem; background-color: #3498db; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem;">
+                📬 Přidat schránku
+            </button>
+            <button onclick="alert('Spravovat pojištění')" 
+                    style="padding: 1rem; background-color: #e67e22; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem;">
+                🛡️ Pojištění
+            </button>
+        </div>
+
+        <!-- News Section -->
+        <h3 style="color: #1a5f7a; margin-bottom: 1.5rem; font-size: 1.5rem; margin-top: 2rem;">Novinky</h3>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+            <div style="background-color: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                <p class="news-date" style="color: #e67e22; font-weight: 600; margin-bottom: 0.5rem;">14. září 2024</p>
+                <h4 style="color: #1a5f7a; margin-bottom: 0.5rem;">Nové balíkové služby pro e-shopovatele</h4>
+                <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">Česká pošta představuje inovované řešení pro online obchodníky s možností rychlého doručení do 24 hodin.</p>
+            </div>
+            <div style="background-color: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                <p class="news-date" style="color: #e67e22; font-weight: 600; margin-bottom: 0.5rem;">12. září 2024</p>
+                <h4 style="color: #1a5f7a; margin-bottom: 0.5rem;">Modernizace parcelních boxů</h4>
+                <p style="color: #666; font-size: 0.9rem; line-height: 1.5;">Více než 500 nových parcelních boxů bude instalováno v Praze a Brně během příštího měsíce.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

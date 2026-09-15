@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ceska pošta - Česká pošta</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <img src="/static/logo.png" alt="Česká pošta logo">
+            </div>
+            <nav class="main-nav">
+                <a href="#" class="active">Domů</a>
+                <a href="#">O nás</a>
+                <a href="#">Služby</a>
+                <a href="#">Ceny</a>
+                <a href="#">Kontakt</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Váš spolehlivý partner pro doručování</h1>
+            <p>Rychlé, bezpečné a ekologické řešení pro všechny vaše pošty.</p>
+            <button class="btn-primary" onclick="window.location.href='https://www.ceskaposta.cz/cs/sluzby'">Více služeb</button>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="container">
+            <h2>Naše služby</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="/static/package.png" alt="Balíky">
+                    <h3>Balíky a zásilky</h3>
+                    <p>Doručujeme balíky do celého světa s přesným sledováním.</p>
+                </div>
+                <div class="service-card">
+                    <img src="/static/parcel-box.png" alt="Parcelní boxy">
+                    <h3>Parcelní boxy</h3>
+                    <p>Výhodné doručování do zabezpečených parcelních boxů.</p>
+                </div>
+                <div class="service-card">
+                    <img src="/static/express.png" alt="Express">
+                    <h3>Express doručení</h3>
+                    <p>Rychlé doručení do 24 hodin pro urgentní zásilky.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news-section">
+        <div class="container">
+            <h2>Aktuality</h2>
+            <div id="news-container" class="news-grid"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>O nás</h4>
+                    <ul>
+                        <li><a href="#">Kdo jsme</a></li>
+                        <li><a href="#">Kariera</a></li>
+                        <li><a href="#">Vědomostní portál</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Služby</h4>
+                    <ul>
+                        <li><a href="#">Balíky a zásilky</a></li>
+                        <li><a href="#">Parcelní boxy</a></li>
+                        <li><a href="#">E-shop pro obchodníky</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontakt</h4>
+                    <ul>
+                        <li><a href="#">Centrální pošta</a></li>
+                        <li><a href="#">Kanceláře</a></li>
+                        <li><a href="#">Telefonní linka</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Česká pošta, s.p. Všechna práva vyhrazena.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/static/app.js"></script>
+</body>
+</html>

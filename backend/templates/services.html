@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Služby - Česká pošta{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="{{ url_for('home') }}">📮 Česká pošta</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Domů</a></li>
+                <li class="nav-item"><a class="nav-link active" href="{{ url_for('services') }}">Služby</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Kontakt</a></li>
+                {% if session.get('is_logged_in') %}
+                    <li class="nav-item ms-2">
+                        <span class="navbar-text text-light me-2">Vítejte, {{ session.username }}</span>
+                        <a class="btn btn-outline-light btn-sm" href="{{ url_for('dashboard') }}">Můj účet</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-outline-light btn-sm" href="{{ url_for('login') }}">Přihlášení</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h1 class="display-5 fw-bold text-primary mb-4">Naše služby</h1>
+    
+    <div class="row">
+        {% for service in services %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 shadow-sm border-primary hover-lift">
+                <div class="card-body text-center p-4">
+                    <h3 class="h5 fw-bold text-primary mb-2">{{ service.icon }} {{ service.title }}</h3>
+                    <p class="text-muted">{{ service.description }}</p>
+                    {% if service.cta_url %}
+                        <a href="{{ service.cta_url }}" class="btn btn-outline-primary btn-sm mt-2">Více informací</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if not session.get('is_logged_in') %}
+    <div class="mt-5 text-center">
+        <p class="text-muted mb-3">Přihlaste se pro přístup k online službám</p>
+        <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg px-4 fw-bold">Přihlásit se</a>
+    </div>
+    {% endif %}
+</div>
+
+<div class="container mt-5 text-center">
+    <hr class="my-4">
+    <p class="text-muted small">© 2026 Česká pošta a.s. Všechna práva vyhrazena.</p>
+</div>
+{% endblock %}
+
+{% block extra_styles %}
+<style>
+.hover-lift:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}
+</style>
+{% endblock %}

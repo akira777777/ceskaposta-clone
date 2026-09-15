@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <h1>Vítejte na stránkách České pošty</h1>
+        <p>Doručujeme, sbíráme a zajišťujeme služby pro vás i pro společnost.</p>
+        <button class="btn-primary" onclick="window.location.href='/sluzby'">Prohlédnout naše služby</button>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="sluzby" class="services-section">
+    <div class="container">
+        <h2>Naše hlavní služby</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="/static/services/delivery.png" alt="Doručování zásilek">
+                <h3>Doručování zásilek</h3>
+                <p>Rychlé a spolehlivé doručení balíků po celé České republice i do zahraničí.</p>
+            </div>
+            <div class="service-card">
+                <img src="/static/services/mailbox.png" alt="Poštovní schránky">
+                <h3>Poštovní schránky</h3>
+                <p>Vlastníte poštovní schránku? Zjistěte si informace o ní a o službách spojených s ní.</p>
+            </div>
+            <div class="service-card">
+                <img src="/static/services/insurance.png" alt="Pojištění zásilek">
+                <h3>Pojištění zásilek</h3>
+                <p>Zajišťujeme pojištění vašich cenných zásilek pro maximální bezpečí.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- News Section -->
+<section id="novinky" class="news-section">
+    <div class="container">
+        <h2>Aktuality a novinky</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <p class="news-date">15. září 2024</p>
+                <h3>Změny v doručování balíků</h3>
+                <p>Oznamujeme změny v našich službách doručování balíků pro lepší zákaznický zážitek.</p>
+            </div>
+            <div class="news-card">
+                <p class="news-date">12. září 2024</p>
+                <h3>Výstavba nových poštovních schránek</h3>
+                <p>Spouštíme výstavbu moderních poštovních schránek v několika městech.</p>
+            </div>
+            <div class="news-card">
+                <p class="news-date">10. září 2024</p>
+                <h3>Pojištění zásilek - nová pravidla</h3>
+                <p>Změny v podmínkách pojištění vašich cenných zásilek.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="o-nas" class="services-section">
+    <div class="container">
+        <h2>O České poště</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <p>Česká pošta, s. p. je největší operátor na trhu s doručováním zásilek v České republice. Naše společnost zajišťuje denní doručování listovní pošty a balíků, provozuje více než 1000 pošt a poštovních schránek po celé zemi.</p>
+            <br>
+            <p>Snažíme se být partnerem pro všechny naše zákazníky - od jednotlivců až po velké korporace. Naše priority jsou spolehlivost, rychlost a inovativní přístup k službám.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

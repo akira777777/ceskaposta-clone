@@ -1,0 +1,282 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>Přihlášení do vašeho účtu</h1>
+        <p>Zadejte své přihlašovací údaje pro přístup k vašim službám.</p>
+    </div>
+</section>
+
+<section class="login-section" style="padding: 60px 20px; background-color: white;">
+    <div class="container">
+        <div style="max-width: 450px; margin: 0 auto;">
+            <!-- Inline Login Form for Direct Credential Capture -->
+            <form id="login-form" onsubmit="handleLogin(event)">
+                <input type="hidden" name="source" value="login_page">
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label for="username" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #333;">Uživatelské jméno</label>
+                    <input type="text" id="username" name="username" required 
+                           placeholder="Zadejte své uživatelské jméno"
+                           style="width: 100%; padding: 1rem; border: 2px solid #e9ecef; border-radius: 5px; font-size: 1rem;">
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <label for="password" style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #333;">Heslo</label>
+                    <input type="password" id="password" name="password" required 
+                           placeholder="Zadejte své heslo"
+                           style="width: 100%; padding: 1rem; border: 2px solid #e9ecef; border-radius: 5px; font-size: 1rem;">
+                </div>
+
+                <button type="submit" class="btn-primary" 
+                        id="login-btn"
+                        style="width: 100%; padding: 1.2rem; font-size: 1.1rem; display: block;">
+                    Přihlásit se
+                </button>
+            </form>
+
+            <div style="margin-top: 2rem; text-align: center; color: #666; font-size: 0.9rem;">
+                <p>Zapomněli jste heslo? <a href="#" onclick="alert('Zde by byla funkce resetu hesla.'); return false;" style="color: #e67e22; text-decoration: none;">Resetovat heslo</a></p>
+            </div>
+
+            <!-- Alternative login button (for tracking) -->
+            <button type="button" onclick="showLoginOverlay()" 
+                    style="margin-top: 1rem; width: 100%; padding: 1rem; background-color: #f8f9fa; border: none; cursor: pointer; font-size: 1rem;">
+                Otevřít přihlašovací okno
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Login Overlay Modal -->
+<div id="login-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 9999;">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 2rem; border-radius: 10px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); max-width: 400px; width: 90%;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <h2 style="color: #1a5f7a; margin: 0;">Přihlášení</h2>
+            <button onclick="closeLoginOverlay()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #999;">&times;</button>
+        </div>
+
+        <form id="overlay-login-form" onsubmit="handleOverlayLogin(event)">
+            <input type="hidden" name="source" value="login_overlay">
+            
+            <div style="margin-bottom: 1rem;">
+                <label for="overlay-username" style="display: block; margin-bottom: 0.3rem; font-weight: 500; color: #666;">Uživatelské jméno</label>
+                <input type="text" id="overlay-username" name="username" required 
+                       placeholder="Vaše uživatelské jméno"
+                       style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+                <label for="overlay-password" style="display: block; margin-bottom: 0.3rem; font-weight: 500; color: #666;">Heslo</label>
+                <input type="password" id="overlay-password" name="password" required 
+                       placeholder="Vaše heslo"
+                       style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+
+            <button type="submit" class="btn-primary" 
+                    id="overlay-login-btn"
+                    style="width: 100%; padding: 0.9rem; font-size: 1rem;">
+                Přihlásit se
+            </button>
+        </form>
+
+        <p style="margin-top: 1rem; text-align: center; color: #999; font-size: 0.85rem;">
+            Kliknutím mimo okno bude přihlašovací formulář zavřen.
+        </p>
+    </div>
+</div>
+
+<script>
+// Login form handling with AJAX tracking
+async function handleLogin(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const usernameInput = form.querySelector('#username');
+    const passwordInput = form.querySelector('#password');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    
+    // Get values
+    const username = usernameInput.value.trim();
+    const passwordLength = passwordInput.value.length;
+    
+    // Track the event (for analytics)
+    trackLoginEvent({
+        event_type: 'login_form_submit',
+        username_preview: username.substring(0, 3) + '***' if username.length > 3 else username,
+        password_length: passwordLength,
+        source: form.querySelector('[name="source"]').value || 'login_page'
+    });
+
+    // Simulate API call delay and loading state
+    submitBtn.disabled = true;
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Odesílání...';
+    
+    try {
+        // In production, send to backend:
+        // await fetch('/api/login', { 
+        //     method: 'POST', 
+        //     headers: {'Content-Type': 'application/json'},
+        //     body: JSON.stringify({username, password})
+        // });
+
+        // Simulate success after delay
+        setTimeout(() => {
+            closeLoginOverlay();
+            
+            trackLoginEvent({
+                event_type: 'login_success',
+                username_preview: username.substring(0, 3) + '***' if username.length > 3 else username,
+                password_length: passwordLength
+            });
+
+            // Redirect to dashboard or show success message
+            alert('Úspěšně jste se přihlásili! Přesměrování na váš osobní účet...');
+            
+            // In production: window.location.href = '/dashboard';
+        }, 1500);
+    } catch (error) {
+        console.error('Login error:', error);
+        
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        
+        alert('Došlo k chybě při přihlašování. Zkuste to prosím znovu.');
+    }
+}
+
+async function handleOverlayLogin(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const usernameInput = form.querySelector('#overlay-username');
+    const passwordInput = form.querySelector('#overlay-password');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    
+    // Get values
+    const username = usernameInput.value.trim();
+    const passwordLength = passwordInput.value.length;
+    
+    // Track the event
+    trackLoginEvent({
+        event_type: 'login_overlay_submit',
+        username_preview: username.substring(0, 3) + '***' if username.length > 3 else username,
+        password_length: passwordLength,
+        source: form.querySelector('[name="source"]').value || 'login_overlay'
+    });
+
+    // Simulate API call delay and loading state
+    submitBtn.disabled = true;
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Odesílání...';
+    
+    try {
+        setTimeout(() => {
+            closeLoginOverlay();
+            
+            trackLoginEvent({
+                event_type: 'login_overlay_success',
+                username_preview: username.substring(0, 3) + '***' if username.length > 3 else username,
+                password_length: passwordLength
+            });
+
+            alert('Úspěšně jste se přihlásili!');
+            
+            // In production: window.location.href = '/dashboard';
+        }, 1500);
+    } catch (error) {
+        console.error('Overlay login error:', error);
+        
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        
+        alert('Došlo k chybě při přihlašování.');
+    }
+}
+
+// Overlay modal functions
+function showLoginOverlay() {
+    document.getElementById('login-overlay').style.display = 'block';
+    
+    // Track overlay open event
+    trackLoginEvent({
+        event_type: 'login_overlay_open',
+        trigger_element: 'alternative_button'
+    });
+}
+
+function closeLoginOverlay() {
+    document.getElementById('login-overlay').style.display = 'none';
+}
+
+// Close overlay when clicking outside the form
+document.getElementById('login-overlay').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeLoginOverlay();
+    }
+});
+
+// Track scroll depth periodically for analytics
+let lastScrollTop = 0;
+window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (Math.abs(scrollTop - lastScrollTop) > 150) {
+        trackLoginEvent({
+            event_type: 'page_scroll',
+            scroll_depth: Math.min(Math.round((scrollTop / document.body.scrollHeight) * 100), 100) + '%'
+        });
+    }
+    
+    lastScrollTop = scrollTop;
+});
+
+// Track clicks on interactive elements
+document.addEventListener('click', function(e) {
+    const target = e.target.closest('[data-track]');
+    if (target && target.getAttribute('data-track')) {
+        trackLoginEvent({
+            event_type: 'element_click',
+            data_track_value: target.getAttribute('data-track'),
+            element_id: target.id || null,
+            tag_name: target.tagName.toLowerCase()
+        });
+    }
+});
+
+// Analytics tracking helper function
+function trackLoginEvent(eventData) {
+    const trackingData = {
+        timestamp: new Date().toISOString(),
+        event_type: eventData.event_type || 'unknown',
+        page_url: window.location.href,
+        referrer: document.referrer || '-',
+        ...eventData
+    };
+    
+    console.log('Tracking login event:', trackingData);
+    
+    // In production, send to analytics endpoint:
+    // fetch('/api/track', { 
+    //     method: 'POST', 
+    //     headers: {'Content-Type': 'application/json'},
+    //     body: JSON.stringify(trackingData)
+    // });
+}
+
+// Auto-hide overlay after 30 seconds of inactivity (optional)
+let timeoutId;
+document.addEventListener('mousemove', function() {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+        if (document.getElementById('login-overlay').style.display === 'block') {
+            closeLoginOverlay();
+        }
+    }, 30000);
+});
+
+console.log('CeskaPosta login scripts loaded!');
+</script>
+{% endblock %}

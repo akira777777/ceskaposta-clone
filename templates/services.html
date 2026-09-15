@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>Naše služby</h1>
+        <p>Kompletní přehled našich poštovních a doručovacích služeb.</p>
+    </div>
+</section>
+
+<section class="services-section">
+    <div class="container">
+        <h2>Doručování zásilek</h2>
+        <div style="max-width: 900px; margin: 0 auto;">
+            <p>Nabízíme širokou škálu doručovacích služeb pro všechny typy zásilek:</p>
+            <ul style="margin-top: 1rem; line-height: 2;">
+                <li><strong>Denní doručování listovní pošty</strong> - tradiční poštovní služba do domácností a firem</li>
+                <li><strong>Balíky do 30 kg</strong> - rychlé doručení balíčků po celé ČR</li>
+                <li><strong>Mezinárodní doručování</strong> - odesílání zásilek do více než 200 zemí světa</li>
+                <li><strong>Kurýrské služby</strong> - prémiové doručení s osobním předáním</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="news-section">
+    <div class="container">
+        <h2>Poštovní schránky</h2>
+        <div style="max-width: 900px; margin: 0 auto;">
+            <p>Vlastníte poštovní schránku? Zjistěte si o ní více:</p>
+            <ul style="margin-top: 1rem; line-height: 2;">
+                <li><strong>Změna držitele</strong> - přenechte schránku novému majiteli</li>
+                <li><strong>Sběr listovní pošty</strong> - automatický odběr dopisů</li>
+                <li><strong>Doručování zásilek</strong> - využijte schránku jako doručovací místo</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="services-section">
+    <div class="container">
+        <h2>Pojištění a další služby</h2>
+        <div style="max-width: 900px; margin: 0 auto;">
+            <ul style="margin-top: 1rem; line-height: 2;">
+                <li><strong>Pojištění zásilek</strong> - ochrana cenných balíků při doručování</li>
+                <li><strong>Sběr starého papíru</strong> - ekologická služba pro sběr recyklovatelného materiálu</li>
+                <li><strong>Poštovní bankomat</strong> - výběr hotovosti z poštovních schránek</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="news-section">
+    <div class="container">
+        <h2>Kalkulačka doplatku</h2>
+        <p style="text-align: center; margin-bottom: 1rem;">Vypočítejte si doplatek za doručení zásilky.</p>
+        <form onsubmit="event.preventDefault(); alert('Funkce kalkulačky bude implementována.');">
+            <div style="max-width: 400px; margin: 0 auto;">
+                <label style="display: block; margin-bottom: 0.5rem;">Hmotnost zásilky (kg)</label>
+                <input type="number" step="0.1" min="0.1" max="30" required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px;">
+                
+                <label style="display: block; margin-bottom: 0.5rem; margin-top: 1rem;">Délka doručení</label>
+                <select required style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="">Vyberte možnost</option>
+                    <option value="den">Doručení do 24 hodin</option>
+                    <option value="3dny">Doručení do 3 dnů</option>
+                    <option value="5dni">Doručení do 5 dnů</option>
+                </select>
+                
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem;">Vypočítat doplatek</button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
