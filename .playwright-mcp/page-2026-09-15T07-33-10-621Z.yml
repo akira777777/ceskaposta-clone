@@ -1,0 +1,221 @@
+- generic [active] [ref=f1e1]:
+  - link "Přejít na hlavní obsah" [ref=f1e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - banner [ref=f1e3]:
+    - generic [ref=f1e4]:
+      - link "Logo České pošty Česká pošta, s.p." [ref=f1e5] [cursor=pointer]:
+        - /url: /
+        - img "Logo České pošty" [ref=f1e6]
+        - generic [ref=f1e7]: Česká pošta, s.p.
+      - search [ref=f1e8]:
+        - generic [ref=f1e9]: Vyhledávání
+        - searchbox "Vyhledávání" [ref=f1e10]
+      - generic [ref=f1e12]:
+        - button "Zaregistrovat" [ref=f1e13] [cursor=pointer]
+        - button "Přihlásit se" [ref=f1e14] [cursor=pointer]
+      - link "EN" [ref=f1e18] [cursor=pointer]:
+        - /url: "#"
+  - navigation [ref=f1e19]:
+    - generic [ref=f1e20]:
+      - link "Služby" [ref=f1e22] [cursor=pointer]:
+        - /url: "#sluzby"
+      - link "Užitečné nástroje" [ref=f1e25] [cursor=pointer]:
+        - /url: "#nastroje"
+      - link "Rady a tipy" [ref=f1e28] [cursor=pointer]:
+        - /url: "#rady"
+      - link "Ke stažení" [ref=f1e31] [cursor=pointer]:
+        - /url: "#download"
+      - link "Kontakty" [ref=f1e34] [cursor=pointer]:
+        - /url: "#kontakty"
+      - link "Kariéra" [ref=f1e37] [cursor=pointer]:
+        - /url: "#kariera"
+      - link "O společnosti" [ref=f1e39] [cursor=pointer]:
+        - /url: "#o-nas"
+  - complementary "Rychlé odkazy" [ref=f1e41]:
+    - button "Sledovat zásilku" [ref=f1e42] [cursor=pointer]
+    - button "Vyhledat pobočku" [ref=f1e46] [cursor=pointer]
+    - button "Poslat zásilku" [ref=f1e50] [cursor=pointer]
+    - button "Kalkulátor zásilek" [ref=f1e54] [cursor=pointer]
+    - button "Poslat balík" [ref=f1e58] [cursor=pointer]
+  - main [ref=f1e62]:
+    - generic [ref=f1e63]:
+      - generic [ref=f1e64]:
+        - generic [ref=f1e65]:
+          - heading "Sledovat zásilku" [level=2] [ref=f1e66]
+          - generic [ref=f1e67]:
+            - generic [ref=f1e68]: Číslo zásilky
+            - textbox "Číslo zásilky" [ref=f1e69]:
+              - /placeholder: Zadejte číslo zásilky
+            - button "Vyhledat" [ref=f1e70] [cursor=pointer]
+        - generic [ref=f1e71]:
+          - article [ref=f1e72]:
+            - generic [ref=f1e73]: 14.09.2026
+            - link "Volební leták není reklamou" [ref=f1e74] [cursor=pointer]:
+              - /url: "#"
+          - article [ref=f1e75]:
+            - generic [ref=f1e76]: 01.09.2026
+            - link "Zvířata a rostliny z Jeseníků na známkách" [ref=f1e77] [cursor=pointer]:
+              - /url: "#"
+          - article [ref=f1e78]:
+            - generic [ref=f1e79]: 31.08.2026
+            - link "Třinec má novou hlavní poštu. Nabízí delší otevírací dobu a modernější obsluhu klientů" [ref=f1e80] [cursor=pointer]:
+              - /url: "#"
+          - link "Archiv aktualit ›" [ref=f1e81] [cursor=pointer]:
+            - /url: "#"
+      - generic [ref=f1e83]:
+        - article [ref=f1e84]:
+          - generic [ref=f1e85]:
+            - heading "Víc času užívat si důchod" [level=2] [ref=f1e86]
+            - paragraph [ref=f1e87]: Založte si Poštovní účet a důchod bude chodit za vámi
+            - generic [ref=f1e88]:
+              - text: Odměna až
+              - strong [ref=f1e89]: 2 500 Kč
+            - button "Zjistit více" [ref=f1e90] [cursor=pointer]
+        - article:
+          - generic:
+            - paragraph: PohledniceOnline
+            - heading "Schránka nikde poblíž?" [level=2]
+            - paragraph:
+              - text: Nevadí,
+              - strong: máme řešení.
+              - text: Pošlete Pohlednici Online přímo z mobilu!
+            - button "Poslat pohled"
+        - article:
+          - generic:
+            - heading "Poštovní výběr kartou" [level=2]
+            - paragraph: Vyberte hotovost na poště i bez bankomatu.
+            - button "Zjistit více"
+        - tablist "Bannery" [ref=f1e91]:
+          - button "Banner 1" [ref=f1e92] [cursor=pointer]
+          - button "Banner 2" [ref=f1e93] [cursor=pointer]
+          - button "Banner 3" [ref=f1e94] [cursor=pointer]
+    - generic [ref=f1e96]:
+      - link "Poštovní psaní a zásilky" [ref=f1e97] [cursor=pointer]:
+        - /url: "#sluzby"
+      - link "Platby a finance" [ref=f1e103] [cursor=pointer]:
+        - /url: "#sluzby"
+      - link "Reklamní zásilky" [ref=f1e108] [cursor=pointer]:
+        - /url: "#sluzby"
+      - link "Služby pošty online" [ref=f1e114] [cursor=pointer]:
+        - /url: "#sluzby"
+      - link "Služby eGovernment" [ref=f1e120] [cursor=pointer]:
+        - /url: "#sluzby"
+      - link "eShopy České Pošty" [ref=f1e125] [cursor=pointer]:
+        - /url: "#sluzby"
+      - link "Filatelia a PostFila" [ref=f1e131] [cursor=pointer]:
+        - /url: "#sluzby"
+      - link "Dálniční známky" [ref=f1e137] [cursor=pointer]:
+        - /url: "#sluzby"
+  - contentinfo [ref=f1e143]:
+    - generic [ref=f1e144]:
+      - generic [ref=f1e145]:
+        - heading "O České poště" [level=4] [ref=f1e146]
+        - list [ref=f1e147]:
+          - listitem [ref=f1e148]:
+            - link "Bezpečnostní informace" [ref=f1e149] [cursor=pointer]:
+              - /url: "#o-nas"
+          - listitem [ref=f1e150]:
+            - link "Kontakty" [ref=f1e151] [cursor=pointer]:
+              - /url: "#kontakty"
+          - listitem [ref=f1e152]:
+            - link "Profil společnosti" [ref=f1e153] [cursor=pointer]:
+              - /url: "#o-nas"
+          - listitem [ref=f1e154]:
+            - link "Pošta Partner" [ref=f1e155] [cursor=pointer]:
+              - /url: "#o-nas"
+          - listitem [ref=f1e156]:
+            - link "Udržitelnost a ESG" [ref=f1e157] [cursor=pointer]:
+              - /url: "#o-nas"
+          - listitem [ref=f1e158]:
+            - link "Ochrana osobních údajů – GDPR" [ref=f1e159] [cursor=pointer]:
+              - /url: "#o-nas"
+      - generic [ref=f1e160]:
+        - heading "Užitečné informace" [level=4] [ref=f1e161]
+        - list [ref=f1e162]:
+          - listitem [ref=f1e163]:
+            - link "Ceník" [ref=f1e164] [cursor=pointer]:
+              - /url: "#download"
+          - listitem [ref=f1e165]:
+            - link "Formuláře a tiskopisy" [ref=f1e166] [cursor=pointer]:
+              - /url: "#download"
+          - listitem [ref=f1e167]:
+            - link "Poštovní podmínky" [ref=f1e168] [cursor=pointer]:
+              - /url: "#download"
+          - listitem [ref=f1e169]:
+            - link "Návody k balení a podání" [ref=f1e170] [cursor=pointer]:
+              - /url: "#rady"
+          - listitem [ref=f1e171]:
+            - link "Když Vás Pošta nezastihla" [ref=f1e172] [cursor=pointer]:
+              - /url: "#rady"
+          - listitem [ref=f1e173]:
+            - link "Celní řízení" [ref=f1e174] [cursor=pointer]:
+              - /url: "#sluzby"
+      - generic [ref=f1e175]:
+        - heading "Nabízíme" [level=4] [ref=f1e176]
+        - list [ref=f1e177]:
+          - listitem [ref=f1e178]:
+            - link "Široké spektrum služeb" [ref=f1e179] [cursor=pointer]:
+              - /url: "#sluzby"
+          - listitem [ref=f1e180]:
+            - link "Zákaznická karta" [ref=f1e181] [cursor=pointer]:
+              - /url: "#sluzby"
+          - listitem [ref=f1e182]:
+            - link "Veřejné zakázky" [ref=f1e183] [cursor=pointer]:
+              - /url: "#o-nas"
+          - listitem [ref=f1e184]:
+            - link "Spolupráci školám a studentům" [ref=f1e185] [cursor=pointer]:
+              - /url: "#kariera"
+          - listitem [ref=f1e186]:
+            - link "Prodej a pronájem nemovitostí" [ref=f1e187] [cursor=pointer]:
+              - /url: "#o-nas"
+          - listitem [ref=f1e188]:
+            - link "Prodej movitého majetku" [ref=f1e189] [cursor=pointer]:
+              - /url: "#o-nas"
+      - generic [ref=f1e190]:
+        - heading "Rychlé odkazy" [level=4] [ref=f1e191]
+        - list [ref=f1e192]:
+          - listitem [ref=f1e193]:
+            - link "Sledovat zásilku" [ref=f1e194] [cursor=pointer]:
+              - /url: "#trackBox"
+          - listitem [ref=f1e195]:
+            - link "Vyhledat PSČ" [ref=f1e196] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f1e197]:
+            - link "Spočítat cenu" [ref=f1e198] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f1e199]:
+            - link "Změna doručení" [ref=f1e200] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f1e201]:
+            - link "Průzkum spokojenosti" [ref=f1e202] [cursor=pointer]:
+              - /url: "#"
+          - listitem [ref=f1e203]:
+            - link "Mobilní aplikace" [ref=f1e204] [cursor=pointer]:
+              - /url: "#"
+    - generic [ref=f1e205]:
+      - generic [ref=f1e206]: © 2026 Česká pošta
+      - generic [ref=f1e207]:
+        - link "Přístupnost webu" [ref=f1e208] [cursor=pointer]:
+          - /url: "#o-nas"
+        - link "Mapa stránek" [ref=f1e209] [cursor=pointer]:
+          - /url: "#o-nas"
+      - generic [ref=f1e210]:
+        - link "Facebook" [ref=f1e211] [cursor=pointer]:
+          - /url: "#"
+          - text: f
+        - link "Instagram" [ref=f1e212] [cursor=pointer]:
+          - /url: "#"
+          - text: ig
+        - link "X" [ref=f1e213] [cursor=pointer]:
+          - /url: "#"
+          - text: x
+  - dialog "banner cookies" [ref=f1e214]:
+    - generic [ref=f1e215]:
+      - paragraph [ref=f1e216]:
+        - text: Kliknutím na tlačítko "Povolit všechny cookies" nám umožníte použití cookies pro analytické a marketingové účely. Kliknutím na odkaz "Konfigurace" máte možnost si cookies nastavit podle sebe a případně vybrat souhlas k těm typům cookies, které nejsou nezbytné pro fungování webu.
+        - link "Více informací" [ref=f1e217] [cursor=pointer]:
+          - /url: "#"
+      - generic [ref=f1e218]:
+        - button "Konfigurace" [ref=f1e219] [cursor=pointer]
+        - button "Přijmout Vše" [ref=f1e220] [cursor=pointer]
+        - button "Odmítnout Vše" [ref=f1e221] [cursor=pointer]

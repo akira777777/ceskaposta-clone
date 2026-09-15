@@ -566,7 +566,182 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Initial fetch for branches and news
-  fetchBranches();
-  updateCalculator();
+  // Initial fetch for branches and news if those panels exist
+  if (document.getElementById('branchesListGrid')) fetchBranches();
+  if (document.getElementById('calcTotalAmount')) updateCalculator();
+
+  const hero = document.getElementById('hero');
+  if (hero) {
+    startHero();
+    hero.addEventListener('mouseenter', stopHero);
+    hero.addEventListener('mouseleave', startHero);
+  }
+
+  const toolPanel = document.getElementById('toolPanel');
+  if (toolPanel) {
+    toolPanel.addEventListener('click', function (e) {
+      if (e.target === toolPanel) closeTool();
+    });
+  }
+
+  document.querySelectorAll('.nav-item-wrap > .nav-item').forEach((link) => {
+    link.addEventListener('click', function (e) {
+      if (window.innerWidth > 860) return;
+      const wrap = link.parentElement;
+      if (wrap?.querySelector('.dropdown')) {
+        e.preventDefault();
+        wrap.classList.toggle('is-open');
+      }
+    });
+  });
 });
+
+function handleSearch(event) {
+  if (event) event.preventDefault();
+  const q = (document.getElementById('siteSearch')?.value || '').trim();
+  showDemoToast(q ? `Hledání „${q}“ je v demu pouze ilustrační.` : 'Zadejte hledaný výraz.');
+  return false;
+}
+
+function focusTracking() {
+  document.getElementById('trackBox')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  setTimeout(() => document.getElementById('trackingCodeInput')?.focus(), 250);
+}
+
+let heroTimer = null;
+let heroIndex = 0;
+
+function goToSlide(index) {
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dots button');
+  if (!slides.length) return;
+  heroIndex = (index + slides.length) % slides.length;
+  slides.forEach((s, i) => s.classList.toggle('is-active', i === heroIndex));
+  dots.forEach((d, i) => d.classList.toggle('is-active', i === heroIndex));
+}
+
+function startHero() {
+  stopHero();
+  heroTimer = setInterval(() => goToSlide(heroIndex + 1), 5500);
+}
+
+function stopHero() {
+  if (heroTimer) clearInterval(heroTimer);
+  heroTimer = null;
+}
+
+function toggleMobileNav() {
+  const nav = document.getElementById('mainNav');
+  const btn = document.querySelector('.menu-toggle');
+  if (!nav) return;
+  const open = nav.classList.toggle('is-open');
+  if (btn) btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+
+function closeTool() {
+  const panel = document.getElementById('toolPanel');
+  if (panel) {
+    panel.classList.add('hidden');
+    panel.innerHTML = '';
+  }
+}
+
+function openTool(kind) {
+  const panel = document.getElementById('toolPanel');
+  if (!panel) return;
+  if (kind === 'calc') {
+    panel.innerHTML = `
+      <div class="tool-card">
+        <button type="button" class="tool-close" onclick="closeTool()" aria-label="Zavřít">&times;</button>
+        <h2>Kalkulátor zásilek</h2>
+        <p>Orientační cena v demu – nejedná se o oficiální ceník.</p>
+        <label for="calcService">Služba</label>
+        <select id="calcService">
+          <option value="balikovna">Balíkovna</option>
+          <option value="do_ruky">Balík Do ruky</option>
+          <option value="na_postu">Balík Na poštu</option>
+          <option value="doporucene">Doporučené psaní</option>
+        </select>
+        <label for="calcWeight">Hmotnost (kg)</label>
+        <input id="calcWeight" type="number" min="0.1" step="0.1" value="1">
+        <div class="row">
+          <label><input type="checkbox" id="calcCod"> Dobírka</label>
+          <label><input type="checkbox" id="calcFragile"> Křehké</label>
+          <label><input type="checkbox" id="calcIns"> Pojištění</label>
+        </div>
+        <div class="row">
+          <button type="button" class="btn-yellow" onclick="runHomepageCalculator()">Spočítat</button>
+        </div>
+        <div id="calcOut"></div>
+      </div>`;
+  } else if (kind === 'branch') {
+    panel.innerHTML = `
+      <div class="tool-card">
+        <button type="button" class="tool-close" onclick="closeTool()" aria-label="Zavřít">&times;</button>
+        <h2>Vyhledat pobočku</h2>
+        <label for="branchQuery">Město, PSČ nebo název</label>
+        <input id="branchQuery" type="search" placeholder="např. Praha">
+        <div class="row">
+          <button type="button" class="btn-yellow" onclick="runHomepageBranchSearch()">Hledat</button>
+        </div>
+        <div id="branchOut" class="branch-list"></div>
+      </div>`;
+    setTimeout(() => runHomepageBranchSearch(), 0);
+  } else {
+    panel.innerHTML = `
+      <div class="tool-card">
+        <button type="button" class="tool-close" onclick="closeTool()" aria-label="Zavřít">&times;</button>
+        <h2>Poslat zásilku</h2>
+        <p>Podání zásilky je v tomto demu ilustrační. Na ostře by vás odkázalo do PoštaOnline / Balíkovny.</p>
+        <div class="row">
+          <button type="button" class="btn-yellow" onclick="openTool('calc')">Kalkulátor</button>
+          <button type="button" class="btn-navy" onclick="closeTool(); focusTracking();">Sledovat zásilku</button>
+        </div>
+      </div>`;
+  }
+  panel.classList.remove('hidden');
+}
+
+async function runHomepageCalculator() {
+  const out = document.getElementById('calcOut');
+  try {
+    const res = await fetch('/api/calculate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        service: document.getElementById('calcService')?.value,
+        weight: document.getElementById('calcWeight')?.value,
+        cod: document.getElementById('calcCod')?.checked,
+        fragile: document.getElementById('calcFragile')?.checked,
+        insurance: document.getElementById('calcIns')?.checked
+      })
+    });
+    const data = await res.json();
+    const rows = (data.breakdown || []).map((r) => `<li>${r.item}: ${r.price} Kč</li>`).join('');
+    out.innerHTML = `<p><strong>${data.totalPrice} Kč</strong> · ${data.serviceName}<br>${data.deliveryTime}</p><ul>${rows}</ul>`;
+  } catch (err) {
+    if (out) out.innerHTML = '<p>Kalkulátor je dočasně nedostupný.</p>';
+  }
+}
+
+async function runHomepageBranchSearch() {
+  const q = document.getElementById('branchQuery')?.value || '';
+  const out = document.getElementById('branchOut');
+  if (out) out.innerHTML = '<p>Hledám…</p>';
+  try {
+    const res = await fetch('/api/branches?query=' + encodeURIComponent(q));
+    const data = await res.json();
+    if (!data.branches?.length) {
+      out.innerHTML = '<p>Žádná pobočka v demu neodpovídá.</p>';
+      return;
+    }
+    out.innerHTML = data.branches.map((b) => `
+      <div class="branch-item">
+        <strong>${b.name}</strong><br>
+        ${b.address}<br>
+        ${b.hours}
+      </div>`).join('');
+  } catch (err) {
+    if (out) out.innerHTML = '<p>Vyhledávání poboček je dočasně nedostupné.</p>';
+  }
+}
