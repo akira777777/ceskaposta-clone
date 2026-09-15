@@ -88,4 +88,64 @@ test.describe('Educational UI demo - E2E Tests', () => {
     const health = await request.get('http://localhost:3002/health');
     expect(health.ok()).toBe(true);
   });
+
+  // =========================================================================
+  // PRODUCTION SUITE TESTS (New verified features)
+  // =========================================================================
+
+  test('Parcel tracking displays live milestones and details', async ({ page }) => {
+    await page.fill('#trackingCodeInput', 'DR123456789CZ');
+    await page.click('.btn-track');
+    await page.waitForSelector('#trackingResult:not(.hidden)', { timeout: 5000 });
+    const resultText = await page.textContent('#trackingResult');
+    expect(resultText).toContain('DR123456789CZ');
+    expect(resultText).toContain('Balík Do ruky');
+    expect(resultText).toContain('Historie pohybu zásilky');
+  });
+
+  test('Postage calculator updates rates upon changing options', async ({ page }) => {
+    await page.click('.service-radio-card[data-service="do_ruky"]');
+    await page.waitForTimeout(400);
+    let total = await page.textContent('#calcTotalAmount');
+    expect(total).toContain('129 Kč');
+
+    await page.check('#calcCod');
+    await page.waitForTimeout(400);
+    total = await page.textContent('#calcTotalAmount');
+    expect(total).toContain('159 Kč');
+  });
+
+  test('Branch finder filters results by city query', async ({ page }) => {
+    await page.fill('#branchSearchInput', 'Brno');
+    await page.waitForTimeout(400);
+    const cards = await page.$$('.branches-list-grid .branch-card');
+    expect(cards.length).toBeGreaterThan(0);
+    const text = await page.textContent('.branches-list-grid');
+    expect(text).toContain('Brno');
+  });
+
+  test('Accessibility settings can switch to Dark Mode', async ({ page }) => {
+    await page.click('.header-actions .btn-icon:nth-child(2)');
+    await page.waitForSelector('#settingsModal:not(.hidden)', { timeout: 3000 });
+    await page.click('button[data-theme="dark"]');
+    const theme = await page.evaluate(() => document.documentElement.getAttribute('data-theme'));
+    expect(theme).toBe('dark');
+  });
+
+  test('Cookie configuration modal allows granular preferences saving', async ({ page }) => {
+    await page.click('.cookie-buttons .btn-cookie.btn-secondary:first-of-type');
+    await page.waitForSelector('#cookieModal:not(.hidden)', { timeout: 3000 });
+    await page.click('#cookieModal .btn-primary');
+    await page.waitForSelector('#cookieModal.hidden', { timeout: 3000 });
+    await page.waitForSelector('#cookieBanner.hidden', { timeout: 3000 });
+  });
+
+  test('Internal and sensitive files are blocked from HTTP access', async ({ request }) => {
+    const pkg = await request.get('http://localhost:3002/package.json');
+    expect(pkg.status()).toBe(404);
+    const srv = await request.get('http://localhost:3002/server.js');
+    expect(srv.status()).toBe(404);
+    const git = await request.get('http://localhost:3002/.git/config');
+    expect(git.status()).toBe(404);
+  });
 });
