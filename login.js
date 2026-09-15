@@ -526,11 +526,9 @@ function setFontScale(scale) {
 // ============================================================================
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Restore saved theme and font scale
   try {
-    const savedTheme = localStorage.getItem('userTheme');
-    if (savedTheme) setTheme(savedTheme);
-
+    localStorage.removeItem('userTheme');
+    document.documentElement.removeAttribute('data-theme');
     const savedScale = localStorage.getItem('userFontScale');
     if (savedScale) setFontScale(savedScale);
   } catch (e) {}
@@ -586,13 +584,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.querySelectorAll('.nav-item-wrap > .nav-item').forEach((link) => {
     link.addEventListener('click', function (e) {
-      if (window.innerWidth > 860) return;
       const wrap = link.parentElement;
-      if (wrap?.querySelector('.dropdown')) {
-        e.preventDefault();
-        wrap.classList.toggle('is-open');
-      }
+      if (!wrap?.querySelector('.dropdown')) return;
+      e.preventDefault();
+      document.querySelectorAll('.nav-item-wrap.is-open').forEach((w) => {
+        if (w !== wrap) w.classList.remove('is-open');
+      });
+      wrap.classList.toggle('is-open');
     });
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.nav-item-wrap')) {
+      document.querySelectorAll('.nav-item-wrap.is-open').forEach((w) => w.classList.remove('is-open'));
+    }
   });
 });
 

@@ -63,7 +63,10 @@ button { font-family: inherit; }
 }
 .skip-link:focus { left: 12px; }
 
-.hidden { display: none !important; }
+.hidden {
+    display: none !important;
+    pointer-events: none !important;
+}
 
 /* ===== Header ===== */
 
@@ -255,7 +258,8 @@ button { font-family: inherit; }
 }
 .dropdown a:hover { background: #f4f6fb; text-decoration: none; }
 .nav-item-wrap:hover .dropdown,
-.nav-item-wrap:focus-within .dropdown { display: block; }
+.nav-item-wrap:focus-within .dropdown,
+.nav-item-wrap.is-open .dropdown { display: block; }
 
 /* ===== Quick rail ===== */
 
@@ -821,7 +825,9 @@ button { font-family: inherit; }
     z-index: 1100;
     background: rgba(0, 39, 118, 0.88);
     color: #fff;
-    padding: 20px 24px;
+    padding: 12px 24px;
+    max-height: 28vh;
+    overflow: auto;
 }
 
 .cookie-content {
@@ -830,13 +836,13 @@ button { font-family: inherit; }
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
 }
 
 .cookie-text {
     margin: 0;
-    font-size: 14px;
-    line-height: 1.45;
+    font-size: 13px;
+    line-height: 1.4;
     flex: 1;
 }
 .cookie-text a { color: #fff; text-decoration: underline; }
@@ -1093,18 +1099,9 @@ input:focus-visible {
 }
 .theme-pill-btn.active, .font-pill-btn.active { background: var(--yellow); border-color: var(--yellow); }
 
-[data-theme="dark"] body,
-[data-theme="dark"] .header,
-[data-theme="dark"] .nav-bar,
-[data-theme="dark"] .main-content,
-[data-theme="dark"] .news-section,
-[data-theme="dark"] .tool-col,
 [data-theme="dark"] .modal-content {
-    background: #0e1630;
-    color: #e8ecf4;
+    box-shadow: 0 12px 40px rgba(0, 39, 118, 0.35);
 }
-[data-theme="dark"] .footer { background: #0b1224; color: #e8ecf4; }
-[data-theme="dark"] a, [data-theme="dark"] .btn-icon, [data-theme="dark"] .auth-register { color: #dbe4ff; }
 
 @media (max-width: 860px) {
     .tools-board { grid-template-columns: 1fr; }

@@ -130,6 +130,23 @@ test.describe('Educational UI demo - E2E Tests', () => {
     await page.click('button[data-theme="dark"]');
     const theme = await page.evaluate(() => document.documentElement.getAttribute('data-theme'));
     expect(theme).toBe('dark');
+    const bg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
+    expect(bg).toBe('rgb(255, 255, 255)');
+  });
+
+  test('Cookie banner does not intercept main service clicks', async ({ page }) => {
+    await page.evaluate(() => {
+      try { localStorage.removeItem('cookieConsent'); } catch (e) {}
+      document.getElementById('cookieBanner')?.classList.remove('hidden');
+    });
+    const card = page.locator('.services-grid .service-card').first();
+    await expect(card).toBeVisible();
+    await card.click();
+    const intercepted = await page.evaluate(() => {
+      const el = document.elementFromPoint(400, 520);
+      return !!(el && el.closest && el.closest('#cookieBanner, #loginModal, #toolPanel, #settingsModal, #cookieModal'));
+    });
+    expect(intercepted).toBe(false);
   });
 
   test('Cookie configuration modal allows granular preferences saving', async ({ page }) => {
