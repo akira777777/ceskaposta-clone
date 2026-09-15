@@ -82,6 +82,65 @@ const mockNews = [
   }
 ];
 
+const homeNews = [
+  {
+    id: 1,
+    title: 'Volební leták není reklamou',
+    summary: 'Informace k doručování volebních materiálů a k tomu, proč nejde o reklamní zásilku.',
+    content: 'Česká pošta doručuje volební letáky v rámci zákonných povinností. Nejde o reklamní zásilku, proto se na ni nevztahuje zákaz vhazování reklamy do schránek označených „reklamu nechci“.\n\nVolební materiály se doručují podle pokynů zadavatele a volebního kalendáře. Pokud leták nedorazil, ověřte přístupnost schránky a jmenovku.\n\nDotazy k obsahu směřujte na zadavatele. Pošta odpovídá za doručení, nikoli za politický obsah.',
+    category: 'Aktuality',
+    date: '2026-09-14T08:00:00.000Z',
+    readTime: '3 min čtení'
+  },
+  {
+    id: 2,
+    title: 'Zvířata a rostliny z Jeseníků na známkách',
+    summary: 'Nová emise známek představuje přírodu Chráněné krajinné oblasti Jeseníky.',
+    content: 'Česká pošta vydává příležitostné známky věnované Jeseníkům. Emise je pro sběratele i běžný provoz.\n\nZnámky koupíte na filatelistických přepážkách a v e-shopu PostFila. K dispozici jsou obálky prvního dne.\n\nNominální hodnoty odpovídají vnitrostátnímu psaní.',
+    category: 'Filatelie',
+    date: '2026-09-01T08:00:00.000Z',
+    readTime: '2 min čtení'
+  },
+  {
+    id: 3,
+    title: 'Třinec má novou hlavní poštu. Nabízí delší otevírací dobu a modernější obsluhu klientů',
+    summary: 'Nová hlavní pošta v Třinci má delší otvírací dobu a přehlednější přepážky.',
+    content: 'V Třinci byla otevřena nová hlavní pošta s delší otevírací dobou, bezbariérovým přístupem a novým vyvolávacím systémem.\n\nK dispozici jsou podání a výdej zásilek, Czech POINT, platba kartou a výběr hotovosti.\n\nAktuální hodiny ověříte ve vyhledávači poboček. Čas si lze rezervovat předem.',
+    category: 'Pobočky',
+    date: '2026-08-31T08:00:00.000Z',
+    readTime: '3 min čtení'
+  }
+];
+
+mockNews.unshift(...homeNews.map((item, i) => ({ ...item, id: i + 1 })));
+mockNews.forEach((item, i) => { item.id = i + 1; });
+
+const mockPages = {
+  bezpecnost: { title: 'Bezpečnostní informace', body: 'Česká pošta chrání zásilky, data klientů i provoz poboček. Cenné zásilky podávejte jako evidované a pojištěné.\n\nZtrátu, poškození nebo podezřelé chování nahlaste na infolince nebo na pobočce. PIN k výdeji a hesla k účtům nikomu nesdělujte.' },
+  kontakty: { title: 'Kontakty', body: 'Infolinka: 954 211 000 v pracovní dny. Osobní podání vyřídíte na pobočce ve vyhledávači.\n\nU reklamace uveďte číslo zásilky a datum podání. Pro média a smluvní zákazníky použijte specializované kontakty.' },
+  profil: { title: 'Profil společnosti', body: 'Česká pošta, s.p., je státní podnik s celostátní sítí poboček, doručovatelů a Balíkoven. Zajišťuje univerzální službu, balíky, platby i eGovernment.\n\nSídlo je v Praze. Podnik se řídí zákonem o státním podniku a poštovními podmínkami.' },
+  partner: { title: 'Pošta Partner', body: 'Pošta Partner je partnerská přepážka v obci nebo obchodě. Podáte tu psaní a balíky a často zaplatíte složenku.\n\nHodiny se liší podle partnera — ověřte je před cestou ve vyhledávači poboček.' },
+  esg: { title: 'Udržitelnost a ESG', body: 'Snižujeme emise doručování a sledujeme spotřebu energií na pobočkách.\n\nZprávy o udržitelnosti popisují environmentální, sociální a governance cíle.' },
+  gdpr: { title: 'Ochrana osobních údajů – GDPR', body: 'Údaje zpracováváme k doručení zásilky, vedení účtu a zákonným povinnostem.\n\nMáte právo na přístup, opravu, výmaz a námitku. Cookies nastavíte v liště souhlasu na webu.' },
+  cenik: { title: 'Ceník služeb České pošty', body: 'Ceny psaní, balíků, poukázek a Czech POINT jsou v aktuálním ceníku ke stažení.\n\nOrientační cenu spočítá kalkulátor na úvodní straně. Na přepážce rozhoduje hmotnost a doplňkové služby.' },
+  formulare: { title: 'Formuláře a tiskopisy', body: 'Podací lístky, celní prohlášení a žádosti stáhnete v této sekci.\n\nNa pobočku vezměte vyplněný tiskopis a doklad totožnosti.' },
+  podminky: { title: 'Poštovní a obchodní podmínky', body: 'Podmínky upravují podání, doručení, reklamace a odpovědnost za zásilku.\n\nObchodní podmínky e-shopu a Balíkovny jsou samostatné. Archiv verzí je ke stažení.' },
+  baleni: { title: 'Návody k balení a podání', body: 'Použijte pevnou krabici, výplň a čitelnou adresu s PSČ.\n\nKřehké zboží označte a zvolte pojištění. Nebezpečné věci podléhají omezením.' },
+  nedoruceni: { title: 'Když Vás Pošta nezastihla', body: 'Nedoručenou zásilku najdete na výzvě s úložní lhůtou a místem výdeje.\n\nK výdeji potřebujete doklad a kód. Lhůtu lze někdy prodloužit nebo zásilku přesměrovat.' },
+  clo: { title: 'Celní řízení', body: 'Zásilky ze zemí mimo EU mohou podléhat clu a DPH.\n\nBez dokončeného řízení zásilku nevydáme. Údaje doplníte podle výzvy v oznámení.' },
+  sluzby: { title: 'Široké spektrum služeb', body: 'Nabízíme psaní, balíky, platby, Czech POINT, datové schránky, filatelii a PostSignum.\n\nPřehled je v žlutém pruhu na úvodní straně. Cenu ověříte ceníkem nebo kalkulátorem.' },
+  karta: { title: 'Zákaznická karta', body: 'Karta zrychluje podání a výdej a eviduje zásilky.\n\nVydání vyřiďte na pobočce s dokladem. Ztrátu nahlaste.' },
+  zakazky: { title: 'Veřejné zakázky', body: 'Zakázky uveřejňujeme podle zákona o zadávání veřejných zakázek.\n\nDokumentace je v profilu zadavatele. Dotazy posílejte jen na kontakt uvedený u zakázky.' },
+  studenti: { title: 'Spolupráce školám a studentům', body: 'Školám nabízíme exkurze, praxe a informace o poštovních povoláních.\n\nHromadné návštěvy je nutné domluvit předem.' },
+  nemovitosti: { title: 'Prodej a pronájem nemovitostí', body: 'NePotřebné budovy a pozemky nabízíme k prodeji nebo pronájmu.\n\nNabídky a termíny prohlídek jsou v inzerci.' },
+  majetek: { title: 'Prodej movitého majetku', body: 'Vyřazená technika a vybavení se prodává ve výběrových řízeních.\n\nPoložky a termíny najdete u jednotlivých výzev.' },
+  pristupnost: { title: 'Přístupnost webu', body: 'Web podporuje kontrast, klávesnici a přeskočení na obsah.\n\nBariéru nahlaste přes kontakt. Známá omezení jsou v prohlášení o přístupnosti.' },
+  mapa: { title: 'Mapa stránek', body: 'Hlavní celky webu: služby, nástroje, rady, ke stažení, kontakty a o společnosti.\n\nAktuality jsou v archivu. Sledování zásilky a kalkulátor najdete na úvodní straně.' },
+  zmena: { title: 'Změna doručení', body: 'U vybraných balíků změníte den, adresu nebo výdejní místo před doručením.\n\nZadáte číslo zásilky a ověřovací údaj. Služba není u všech produktů.' },
+  pruzkum: { title: 'Průzkum spokojenosti', body: 'Po doručení vás můžeme požádat o krátké hodnocení.\n\nOdpověď je dobrovolná a nemá vliv na výdej zásilky.' },
+  aplikace: { title: 'Mobilní aplikace PoštaOnline', body: 'Aplikace sleduje zásilky, hledá pobočku a ukáže výzvy k vyzvednutí.\n\nStahujte ji z oficiálních obchodů. Přihlášení je stejné jako na webu PoštaOnline.' }
+};
+
 // Branches and parcel boxes dataset
 const mockBranches = [
   {
@@ -219,6 +278,18 @@ app.get('/api/news/:id', (req, res) => {
   const item = mockNews.find(n => n.id === parseInt(req.params.id, 10));
   if (!item) return res.status(404).json({ error: 'Zpráva nenalezena' });
   res.json({ item });
+});
+
+app.get('/api/pages', (req, res) => {
+  res.json({
+    pages: Object.entries(mockPages).map(([slug, page]) => ({ slug, title: page.title }))
+  });
+});
+
+app.get('/api/pages/:slug', (req, res) => {
+  const page = mockPages[req.params.slug];
+  if (!page) return res.status(404).json({ error: 'Stránka nenalezena' });
+  res.json({ slug: req.params.slug, ...page });
 });
 
 // Parcel tracking endpoint
@@ -489,10 +560,18 @@ app.get(['/', '/index.html'], (req, res) => {
   res.sendFile(path.join(PROJECT_ROOT, 'index.html'));
 });
 
+const sendInner = (req, res) => {
+  res.setHeader('Cache-Control', 'no-store');
+  res.sendFile(path.join(PROJECT_ROOT, 'inner.html'));
+};
+
+app.get(['/aktuality', '/aktuality/:id', '/info/:slug'], sendInner);
+
 // Explicit routes for verified front-end assets
 const ALLOWED_STATIC_FILES = [
   'styles.css',
   'login.js',
+  'inner.js',
   'test-script.js',
   'test-page.png',
   'test.html'

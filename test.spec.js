@@ -165,6 +165,32 @@ test.describe('Educational UI demo - E2E Tests', () => {
     expect(isHidden).toBe(true);
   });
 
+  test('News title opens article with full text', async ({ page }) => {
+    await page.click('.news-title-small');
+    await page.waitForURL(/\/aktuality\/1/);
+    const heading = await page.locator('#innerRoot h1').textContent();
+    expect(heading).toContain('Volební leták není reklamou');
+    const body = await page.locator('#innerRoot').textContent();
+    expect(body.length).toBeGreaterThan(80);
+  });
+
+  test('News archive lists articles', async ({ page }) => {
+    await page.click('.news-archive');
+    await page.waitForURL(/\/aktuality$/);
+    const heading = await page.locator('#innerRoot h1').textContent();
+    expect(heading).toContain('Aktuality');
+    expect((await page.$$('#innerRoot .inner-list-item')).length).toBeGreaterThan(0);
+  });
+
+  test('Footer GDPR link opens info page', async ({ page }) => {
+    await page.click('footer a[href="/info/gdpr"]');
+    await page.waitForURL(/\/info\/gdpr/);
+    const heading = await page.locator('#innerRoot h1').textContent();
+    expect(heading).toContain('GDPR');
+    const body = await page.locator('#innerRoot').textContent();
+    expect(body).toMatch(/osobní|údaj/i);
+  });
+
   test('Internal and sensitive files are blocked from HTTP access', async ({ request }) => {
     const pkg = await request.get('http://localhost:3002/package.json');
     expect(pkg.status()).toBe(404);
