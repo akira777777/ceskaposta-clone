@@ -96,7 +96,7 @@ test.describe('Educational UI demo - E2E Tests', () => {
   test('Parcel tracking displays live milestones and details', async ({ page }) => {
     await page.fill('#trackingCodeInput', 'DR123456789CZ');
     await page.click('.btn-track');
-    await page.waitForSelector('#trackingResult:not(.hidden)', { timeout: 5000 });
+    await page.waitForSelector('#trackingResult .tracking-code-title', { timeout: 5000 });
     const resultText = await page.textContent('#trackingResult');
     expect(resultText).toContain('DR123456789CZ');
     expect(resultText).toContain('Balík Do ruky');
@@ -133,11 +133,19 @@ test.describe('Educational UI demo - E2E Tests', () => {
   });
 
   test('Cookie configuration modal allows granular preferences saving', async ({ page }) => {
-    await page.click('.cookie-buttons .btn-cookie.btn-secondary:first-of-type');
+    await page.click('#btnCookieConfig');
     await page.waitForSelector('#cookieModal:not(.hidden)', { timeout: 3000 });
     await page.click('#cookieModal .btn-primary');
-    await page.waitForSelector('#cookieModal.hidden', { timeout: 3000 });
-    await page.waitForSelector('#cookieBanner.hidden', { timeout: 3000 });
+    await page.waitForFunction(() => {
+      const modal = document.getElementById('cookieModal');
+      const banner = document.getElementById('cookieBanner');
+      return modal && modal.classList.contains('hidden') && banner && banner.classList.contains('hidden');
+    }, { timeout: 3000 });
+    const isHidden = await page.evaluate(() => {
+      return document.getElementById('cookieModal').classList.contains('hidden') &&
+             document.getElementById('cookieBanner').classList.contains('hidden');
+    });
+    expect(isHidden).toBe(true);
   });
 
   test('Internal and sensitive files are blocked from HTTP access', async ({ request }) => {
